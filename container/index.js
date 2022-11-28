@@ -8,19 +8,19 @@ app.use(bodyParser.json());
 
 const posts = {};
 
-app.get('/posts', (req, res) => {
+app.get('/hoststatus', (req, res) => {
 
-    console.log('Recieved Get');
+    console.log('Recieved Get hoststatus');
     res.send(posts);
 });
 
-app.post('/posts', (req, res) => {
+app.post('/hoststatus', (req, res) => {
     const id = randomBytes(4).toString('hex');
     const { hostname } = req.body;
 
-    console.log('Recieved Post'); 
+    console.log('Recieved Host Status'); 
 
-    posts[id] = {
+    posts[hoststatus] = {
         id, hostname
     };
 
