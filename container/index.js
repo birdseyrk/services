@@ -20,11 +20,11 @@ app.post('/hoststatus', (req, res) => {
 
     console.log('Recieved Host Status'); 
 
-    posts[id] = {
+    posts[hostname] = {
         id, hostname
     };
 
-    res.status(201).send(posts[id]);
+    res.status(201).send(posts[hostname]);
 });
 
 app.listen(8085, () => {
