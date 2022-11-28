@@ -16,12 +16,12 @@ app.get('/hoststatus', (req, res) => {
 
 app.post('/hoststatus', (req, res) => {
     const id = randomBytes(4).toString('hex');
-    const { hostname } = req.body;
+    const { status } = req.body;
 
     console.log('Recieved Host Status'); 
 
-    posts[hoststatus] = {
-        id, hostname
+    posts[id] = {
+        id, status
     };
 
     res.status(201).send(posts[id]);
