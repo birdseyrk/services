@@ -44,7 +44,7 @@ app.post('/uptime', (req, res) => {
 
     console.log('Recieved uptime'); 
 
-    posts[uptime] = {
+    posts[hostname] = {
         id, hostname
     };
 
