@@ -8,6 +8,8 @@ app.use(bodyParser.json());
 
 const posts = {};
 
+const uptimes = {};
+
 app.get('/hoststatus', (req, res) => {
 
     console.log('Recieved Get hoststatus');
@@ -18,7 +20,7 @@ app.post('/hoststatus', (req, res) => {
     const id = randomBytes(4).toString('hex');
     const { hostname } = req.body;
 
-    console.log('Recieved Host Status'); 
+    console.log('Recieved hoststatus'); 
 
     posts[hostname] = {
         id, hostname
@@ -26,6 +28,30 @@ app.post('/hoststatus', (req, res) => {
 
     res.status(201).send(posts[hostname]);
 });
+
+
+
+
+app.get('/uptime', (req, res) => {
+
+    console.log('Recieved Get uptime');
+    res.send(posts);
+});
+
+app.post('/uptime', (req, res) => {
+    const id = randomBytes(4).toString('hex');
+    const { hostname } = req.body;
+
+    console.log('Recieved uptime'); 
+
+    posts[uptime] = {
+        id, hostname
+    };
+
+    res.status(201).send(posts[hostname]);
+});
+
+
 
 app.listen(8085, () => {
     console.log('Listening on 8085');
