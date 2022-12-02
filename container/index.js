@@ -119,7 +119,7 @@ app.post('/uptime', (req, res) => {
     console.log('uptime ===>' + JSON.stringify( uptimes[hostname].uptime) +'<==='); 
     console.log('lastupdate ===>' + JSON.stringify( uptimes[hostname].lastupdate) +'<==='); 
     //uptimes[hostname]
-    myStatus = {"hostname":uptimes[myUptime].hostname, "uptime":uptimes[myUptime].uptime, "lastupdate":uptimes[myUptime].lastupdate};
+    myStatus = {"hostname":uptimes[hostname].hostname, "uptime":uptimes[hostname].uptime, "lastupdate":uptimes[hostname].lastupdate};
         
     //res.status(201).send(uptimes[hostname]);
     res.status(201).send(myStatus);
