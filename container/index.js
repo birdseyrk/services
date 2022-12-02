@@ -114,7 +114,8 @@ app.post('/uptime', (req, res) => {
         hostname, uptime, lastupdate, meminfo, diskinfo, cpuinfo, processinfo
     };
     console.log("=======================================================================");
-    console.log('Hostname ===>' + JSON.stringify( uptimes[hostname]) +'<==='); 
+    console.log('Hostname ===>' + JSON.stringify( uptimes[hostname].hostname) +'<==='); 
+    console.log('Hostname ===>' + JSON.stringify( uptimes[hostname].uptime) +'<==='); 
     //uptimes[hostname]
 
     res.status(201).send(uptimes[hostname]);
