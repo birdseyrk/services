@@ -41,12 +41,15 @@ app.get('/uptime', (req, res) => {
 app.post('/uptime', (req, res) => {
     const id = randomBytes(4).toString('hex');
     const { hostname } = req.body;
+    const { uptime } = req.body;
 
     console.log('Recieved uptime [' + JSON.stringify(req.body) +']'); 
 
     uptimes[hostname] = {
-        id, hostname
+        id, hostname, uptime
     };
+
+    uptimes[hostname]
 
     res.status(201).send(uptimes[hostname]);
 });
