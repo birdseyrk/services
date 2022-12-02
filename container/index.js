@@ -42,7 +42,7 @@ app.post('/uptime', (req, res) => {
     const id = randomBytes(4).toString('hex');
     const { hostname } = req.body;
 
-    console.log('Recieved uptime'); 
+    console.log('Recieved uptime [' + req.body +']'); 
 
     uptimes[hostname] = {
         id, hostname
