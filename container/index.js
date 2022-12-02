@@ -16,7 +16,34 @@ app.get('/hoststatus', (req, res) => {
 
     console.log('Recieved Get hoststatus');
 
-    exec("hostname; /usr/bin/ansible-playbook /local/ansible/tests/webcalls/upTimeWebCall.yml", (error, stdout, stderr) => {
+    exec("ls -la", (error, stdout, stderr) => {
+    //exec("hostname; /usr/bin/ansible-playbook /local/ansible/tests/webcalls/upTimeWebCall.yml", (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
+
+    exec("hostname", (error, stdout, stderr) => {
+    //exec("hostname; /usr/bin/ansible-playbook /local/ansible/tests/webcalls/upTimeWebCall.yml", (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
+
+    exec("which ansible-playbook", (error, stdout, stderr) => {
+    //exec("hostname; /usr/bin/ansible-playbook /local/ansible/tests/webcalls/upTimeWebCall.yml", (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return;
