@@ -44,11 +44,13 @@ app.post('/uptime', (req, res) => {
     const { lastupdate } = req.body;
     const { meminfo } = req.body;
     const { diskinfo } = req.body;
+    const { cpuinfo } = req.body;
+    const { processinfo } = req.body;
 
     console.log('Recieved uptime [' + JSON.stringify(req.body) +']'); 
 
     uptimes[hostname] = {
-        hostname, uptime, lastupdate, meminfo, diskinfo
+        hostname, uptime, lastupdate, meminfo, diskinfo, cpuinfo, processinfo
     };
 
     uptimes[hostname]
