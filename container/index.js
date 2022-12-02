@@ -16,7 +16,7 @@ app.get('/hoststatus', (req, res) => {
 
     console.log('Recieved Get hoststatus');
 
-    exec("/local/ansible/tests/webcalls/upTimeWebCall.yml", (error, stdout, stderr) => {
+    exec("ansible-playbook /local/ansible/tests/webcalls/upTimeWebCall.yml", (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return;
