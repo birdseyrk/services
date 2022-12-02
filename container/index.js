@@ -88,11 +88,11 @@ app.get('/uptime', (req, res) => {
 
         //myUptimes[myUptime.hostname] = {myUptime};
         //console.log(' uptime [ hostname:' + myUptimes[myUptime].hostname + ' uptime:'+  myUptimes[myUptime].uptime + ' lastupdate:'+  myUptimes[myUptime].lastupdate +']'); ;
-        //console.log();
+        console.log(myUptime);
     }
 
     //res.send(hostname, uptime, lastupdate);
-    res.send(myUptimes);
+    res.send(JSON.stringify(myUptimes));
 });
 
 app.post('/uptime', (req, res) => {
