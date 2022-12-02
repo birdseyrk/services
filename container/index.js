@@ -84,13 +84,14 @@ app.get('/uptime', (req, res) => {
     console.log('Recieved Get uptime');
     myUptimes = {};
 
-    for (let myUptime of uptimes ) {
+    for (let myUptime in uptimes ) {
 
         myUptimes[myUptime.hostname] = {myUptime};
-        console.log(' uptime [ hostname:' +myUptime.hostname + ' uptime:'+ myUptime.uptime + ' lastupdate:'+ myUptime.lastupdate +']'); ;
+        console.log(' uptime [ hostname:' + myUptimes[myUptime].hostname + ' uptime:'+  myUptimes[myUptime].uptime + ' lastupdate:'+  myUptimes[myUptime].lastupdate +']'); ;
     }
 
-    res.send(hostname, uptime, lastupdate);
+    //res.send(hostname, uptime, lastupdate);
+    res.send(myUptimes);
 });
 
 app.post('/uptime', (req, res) => {
