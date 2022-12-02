@@ -86,7 +86,7 @@ app.get('/uptime', (req, res) => {
 
     for (let myUptime in uptimes ) {
 
-        myUptimes[myUptime.hostname] = {myUptime};
+        myUptimes[myUptime] = {"hostname":uptimes[myUptime].hostname, "uptime":uptimes[myUptime].uptime, "lastupdate":uptimes[myUptime].lastupdate};
         console.log("=======================================================================");
         console.log(JSON.stringify(myUptime));
         //console.log(' uptime [ hostname:' + myUptimes[myUptime].hostname + ' uptime:'+  myUptimes[myUptime].uptime + ' lastupdate:'+  myUptimes[myUptime].lastupdate +']'); ;
@@ -115,7 +115,8 @@ app.post('/uptime', (req, res) => {
     };
     console.log("=======================================================================");
     console.log('Hostname ===>' + JSON.stringify( uptimes[hostname].hostname) +'<==='); 
-    console.log('Hostname ===>' + JSON.stringify( uptimes[hostname].uptime) +'<==='); 
+    console.log('uptime ===>' + JSON.stringify( uptimes[hostname].uptime) +'<==='); 
+    console.log('lastupdate ===>' + JSON.stringify( uptimes[hostname].lastupdate) +'<==='); 
     //uptimes[hostname]
 
     res.status(201).send(uptimes[hostname]);
