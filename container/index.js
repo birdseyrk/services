@@ -105,6 +105,7 @@ app.post('/uptime', (req, res) => {
     const { diskinfo } = req.body;
     const { cpuinfo } = req.body;
     const { processinfo } = req.body;
+    myStatus = {};
 
     
     console.log("=======================================================================");
@@ -118,8 +119,10 @@ app.post('/uptime', (req, res) => {
     console.log('uptime ===>' + JSON.stringify( uptimes[hostname].uptime) +'<==='); 
     console.log('lastupdate ===>' + JSON.stringify( uptimes[hostname].lastupdate) +'<==='); 
     //uptimes[hostname]
-
-    res.status(201).send(uptimes[hostname]);
+    myStatus = {"hostname":uptimes[myUptime].hostname, "uptime":uptimes[myUptime].uptime, "lastupdate":uptimes[myUptime].lastupdate};
+        
+    //res.status(201).send(uptimes[hostname]);
+    res.status(201).send(myStatus);
 });
 
 
