@@ -35,7 +35,7 @@ app.post('/hoststatus', (req, res) => {
 app.get('/uptime', (req, res) => {
 
     console.log('Recieved Get uptime');
-    res.send(posts);
+    res.send(uptimes);
 });
 
 app.post('/uptime', (req, res) => {
@@ -44,11 +44,11 @@ app.post('/uptime', (req, res) => {
 
     console.log('Recieved uptime'); 
 
-    posts[hostname] = {
+    uptimes[hostname] = {
         id, hostname
     };
 
-    res.status(201).send(posts[hostname]);
+    res.status(201).send(uptimes[hostname]);
 });
 
 
