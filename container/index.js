@@ -10,9 +10,24 @@ const posts = {};
 
 const uptimes = {};
 
+var exec = require('child_process').exec;
+
 app.get('/hoststatus', (req, res) => {
 
     console.log('Recieved Get hoststatus');
+
+    exec("ls -la", (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
+
     res.send(posts);
 });
 
@@ -28,8 +43,6 @@ app.post('/hoststatus', (req, res) => {
 
     res.status(201).send(posts[hostname]);
 });
-
-
 
 
 app.get('/uptime', (req, res) => {
