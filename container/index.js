@@ -9,13 +9,13 @@ app.use(bodyParser.json());
 const posts = {};
 
 const uptimes = {};
-const hostname = {};
-const uptime = {};
-const lastupdate = {};
-const meminfo = {};
-const diskinfo = {};
-const cpuinfo = {};
-const processinfo = {};
+const svrhostname = {};
+const svruptime = {};
+const svrlastupdate = {};
+const svrmeminfo = {};
+const svrdiskinfo = {};
+const svrcpuinfo = {};
+const svrprocessinfo = {};
 
 var exec = require('child_process').exec;
 
@@ -96,13 +96,14 @@ app.get('/uptime', (req, res) => {
 });
 
 app.post('/uptime', (req, res) => {
-    //const { hostname } = req.body;
-    //const { uptime } = req.body;
-    //const { lastupdate } = req.body;:w
-    //const { meminfo } = req.body;
-    //const { diskinfo } = req.body;
-    //const { cpuinfo } = req.body;
-    //const { processinfo } = req.body;
+    const { hostname } = req.body;
+    const { uptime } = req.body;
+    const { lastupdate } = req.body;
+    const { meminfo } = req.body;
+    const { diskinfo } = req.body;
+    const { cpuinfo } = req.body;
+    const { processinfo } = req.body;
+
 
     console.log('Recieved uptime [' + JSON.stringify(req.body) +']'); 
 
@@ -110,7 +111,7 @@ app.post('/uptime', (req, res) => {
         hostname, uptime, lastupdate, meminfo, diskinfo, cpuinfo, processinfo
     };
 
-    uptimes[hostname]
+    //uptimes[hostname]
 
     res.status(201).send(uptimes[hostname]);
 });
