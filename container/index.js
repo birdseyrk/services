@@ -90,7 +90,7 @@ app.post('/hoststatus', (req, res) => {
     
     //myStatus = {"hostname":hostStatus[hostname].hostname, "uptime":hostStatus[hostname].uptime, "lastupdate":hostStatus[hostname].lastupdate, "epoch":hostStatus[hostname].epoch};
 
-    res.status(201).send(hostname, Date.now());
+    res.status(201).send(hostname);
 });
 
 
@@ -150,7 +150,7 @@ app.post('/uptime', (req, res) => {
     
     //myStatus = {"hostname":hostStatus[hostname].hostname, "uptime":hostStatus[hostname].uptime, "lastupdate":hostStatus[hostname].lastupdate, "epoch":hostStatus[hostname].epoch};
         
-    res.status(201).send(hostname, Date.now());
+    res.status(201).send(hostname);
 });  
 
 app.listen(8085, () => {
