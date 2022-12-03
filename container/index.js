@@ -10,7 +10,7 @@ const posts = {};
 
 myHosts = {};
 
-myHosts["creede"]  = {"hostname": "creede", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myHosts["creede"]  = {"hostname": "creede",  "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
 myHosts["creede1"] = {"hostname": "creede1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
 myHosts["ubuntu1"] = {"hostname": "ubuntu1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
 myHosts["ubuntu2"] = {"hostname": "ubuntu2", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
@@ -89,15 +89,12 @@ app.post('/hoststatus', (req, res) => {
 app.get('/uptime', (req, res) => {
 
     console.log('<==========  Get uptime ==========>');
-    myUptimes = {};
+    myUptimes = myHosts;
     
-    for (let host in  myHosts /*uptimes*/ ) {
+    for (let host in  uptimes) {
         console.log(host);
-        if (myUptimes[host]) {
-            myUptimes[host] = {"hostname":uptimes[host].hostname, "uptime":uptimes[host].uptime, "lastupdate":uptimes[host].lastupdate, "epoch":uptimes[host].epoch};
-        } else {
-            myUptimes[host] = {"hostname":myHosts[host].hostname, "lastupdate":myHosts[host].lastupdate, "epoch":myHosts[host].epoch};
-        }
+        myUptimes[host] = {"hostname":uptimes[host].hostname, "uptime":uptimes[host].uptime, "lastupdate":uptimes[host].lastupdate, "epoch":uptimes[host].epoch};
+       
         //console.log(JSON.stringify(myUptimes));
         //console.log("=======================================================================");
 
