@@ -55,15 +55,12 @@ app.get('/hoststatus', (req, res) => {
     
     for (let host in hostStatus ) {
         
-        console.log(host);
         myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "meminfo":hostStatus[host].meminfo, "diskinfo":hostStatus[host].diskinfo, "cpuinfo":hostStatus[host].cpuinfo, "processinfo":hostStatus[host].processinfo};
         //console.log(JSON.stringify(myUptimes));
         //console.log("=======================================================================");
         
     }
 
-    //console.log(JSON.stringify(myStatus));
-    //res.send(JSON.stringify(myStatus));
     res.send(myStatus);
 });
 
@@ -100,7 +97,7 @@ app.get('/uptime', (req, res) => {
     myUptimes = myInitialUptimes;
     
     for (let host in  uptimes) {
-        console.log(host);
+        
         myUptimes[host] = {"hostname":uptimes[host].hostname, "uptime":uptimes[host].uptime, "lastupdate":uptimes[host].lastupdate, "epoch":uptimes[host].epoch};
        
         //console.log(JSON.stringify(myUptimes));
@@ -109,7 +106,6 @@ app.get('/uptime', (req, res) => {
     }
 
     console.log(JSON.stringify(myUptimes));
-    //res.send(JSON.stringify(myUptimes));
     res.send(myUptimes);
 });
 
@@ -147,8 +143,7 @@ app.get('/meminfo', (req, res) => {
         
     }
 
-    console.log(JSON.stringify(myStatus));
-    //res.send(JSON.stringify(myStatus));
+    //console.log(JSON.stringify(myStatus));
     res.send(myStatus);
 });
 
@@ -164,8 +159,7 @@ app.get('/diskinfo', (req, res) => {
         
     }
 
-    console.log(JSON.stringify(myStatus));
-    //res.send(JSON.stringify(myStatus));
+    //console.log(JSON.stringify(myStatus));
     res.send(myStatus);
 });
 
@@ -181,8 +175,7 @@ app.get('/cpuinfo', (req, res) => {
         
     }
 
-    console.log(JSON.stringify(myStatus));
-    //res.send(JSON.stringify(myStatus));
+    //console.log(JSON.stringify(myStatus));
     res.send(myStatus);
 });
 
@@ -198,8 +191,7 @@ app.get('/processinfo', (req, res) => {
         
     }
 
-    console.log(JSON.stringify(myStatus));
-    //res.send(JSON.stringify(myStatus));
+    //console.log(JSON.stringify(myStatus));
     res.send(myStatus);
 });
 
