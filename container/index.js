@@ -120,7 +120,75 @@ app.post('/uptime', (req, res) => {
     // console.log("=======================================================================");
      
     res.status(201).send(hostname);
-});  
+});
+
+app.get('/meminfo', (req, res) => {
+
+    console.log('<========== Get Menory Information ==========>');
+    myStatus = {};
+    
+    for (let host in hostStatus ) {
+        myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "meminfo":hostStatus[host].meminfo};
+        //console.log(JSON.stringify(myUptimes));
+        //console.log("=======================================================================");
+        
+    }
+
+    console.log(JSON.stringify(myStatus));
+    //res.send(JSON.stringify(myStatus));
+    res.send(myStatus);
+});
+
+app.get('/diskinfo', (req, res) => {
+
+    console.log('<========== Get Disk Information ==========>');
+    myStatus = {};
+    
+    for (let host in hostStatus ) {
+        myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "diskinfo":hostStatus[host].diskinfo};
+        //console.log(JSON.stringify(myUptimes));
+        //console.log("=======================================================================");
+        
+    }
+
+    console.log(JSON.stringify(myStatus));
+    //res.send(JSON.stringify(myStatus));
+    res.send(myStatus);
+});
+
+app.get('/cpuinfo', (req, res) => {
+
+    console.log('<========== Get CPU Information ==========>');
+    myStatus = {};
+    
+    for (let host in hostStatus ) {
+        myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "cpuinfo":hostStatus[host].cpuinfo};
+        //console.log(JSON.stringify(myUptimes));
+        //console.log("=======================================================================");
+        
+    }
+
+    console.log(JSON.stringify(myStatus));
+    //res.send(JSON.stringify(myStatus));
+    res.send(myStatus);
+});
+
+app.get('/processinfo', (req, res) => {
+
+    console.log('<========== Get Process Information ==========>');
+    myStatus = {};
+    
+    for (let host in hostStatus ) {
+        myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "processinfo":hostStatus[host].processinfo};
+        //console.log(JSON.stringify(myUptimes));
+        //console.log("=======================================================================");
+        
+    }
+
+    console.log(JSON.stringify(myStatus));
+    //res.send(JSON.stringify(myStatus));
+    res.send(myStatus);
+});
 
 app.listen(8085, () => {
     console.log('Listening on 8085');

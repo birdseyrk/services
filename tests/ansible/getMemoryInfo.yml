@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  gather_facts: False
+  tasks:
+
+  - name: Check that you can connect (GET) to a uptime service and it returns a status 200
+    ansible.builtin.uri:
+      url: "http://192.168.1.102:8085/meminfo"
+      method: GET
+      return_content: true
+      status_code: 200
+      timeout: 15
+    register: result
+
+  - name: debug Web call
+    ansible.builtin.debug:
+      var: result
