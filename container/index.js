@@ -123,7 +123,7 @@ app.post('/uptime', (req, res) => {
         
     //res.status(201).send(uptimes[hostname]);
     res.status(201).send(myStatus);
-});
+});  
 
 
 
