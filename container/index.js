@@ -61,9 +61,8 @@ app.post('/hoststatus', (req, res) => {
     console.log('<==========  Post hoststatus ==========>'); 
     //const epoch = Math.round(Date.now() / 1000);
     const { hostname } = req.body;
-    //moved to uptime const { uptime } = req.body;
-    //moved to uptimeconst { lastupdate } = req.body;
-    //moved to uptimeconst { epoch } = req.body;
+    const { uptime } = req.body;
+    const { lastupdate } = req.body;
     const { epoch } = req.body;
     const { meminfo } = req.body;
     const { diskinfo } = req.body;
@@ -72,7 +71,7 @@ app.post('/hoststatus', (req, res) => {
 
     hostStatus[hostname] = {
         //hostname, uptime, lastupdate, epoch, meminfo, diskinfo, cpuinfo, processinfo
-        hostname, meminfo, diskinfo, cpuinfo, processinfo
+        hostname, lastupdate, epoch, uptime, meminfo, diskinfo, cpuinfo, processinfo
     };
 
     // hostStatus[hostname].hostname = hostname;
@@ -82,11 +81,11 @@ app.post('/hoststatus', (req, res) => {
     // hostStatus[hostname].processinfo = processinfo;
     // hostStatus[hostname].statusEpoch = epoch;
 
-    // console.log("=======================================================================");
-    // console.log('Hostname ===>' + JSON.stringify( hostStatus[hostname].hostname) +'<==='); 
-    // console.log('uptime ===>' + JSON.stringify( hostStatus[hostname].uptime) +'<==='); 
-    // console.log('lastupdate ===>' + JSON.stringify( hostStatus[hostname].lastupdate) +'<==='); 
-    // console.log('epoch ===>' + JSON.stringify( hostStatus[hostname].epoch) +'<==='); 
+    console.log("=======================================================================");
+    console.log('Hostname ===>' + JSON.stringify( hostStatus[hostname].hostname) +'<==='); 
+    console.log('uptime ===>' + JSON.stringify( hostStatus[hostname].uptime) +'<==='); 
+    console.log('lastupdate ===>' + JSON.stringify( hostStatus[hostname].lastupdate) +'<==='); 
+    console.log('epoch ===>' + JSON.stringify( hostStatus[hostname].epoch) +'<==='); 
     
     //myStatus = {"hostname":hostStatus[hostname].hostname, "uptime":hostStatus[hostname].uptime, "lastupdate":hostStatus[hostname].lastupdate, "epoch":hostStatus[hostname].epoch};
 
