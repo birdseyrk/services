@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 const posts = {};
 
-const myHosts = [];
+myHosts = {};
 
 myHosts["creede"]  = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
 myHosts["creede1"] = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
