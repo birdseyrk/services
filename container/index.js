@@ -58,8 +58,6 @@ app.get('/hoststatus', (req, res) => {
 });
 
 app.post('/hoststatus', (req, res) => {
-
-    console.log('<==========  Post hoststatus ==========>'); 
     
     const { hostname } = req.body;
     const { uptime } = req.body;
@@ -69,6 +67,8 @@ app.post('/hoststatus', (req, res) => {
     const { diskinfo } = req.body;
     const { cpuinfo } = req.body;
     const { processinfo } = req.body;
+
+    console.log('<==========  Post hoststatus ' + hostname + '==========>'); 
 
     hostStatus[hostname] = {
         hostname, lastupdate, epoch, uptime, meminfo, diskinfo, cpuinfo, processinfo
@@ -86,7 +86,7 @@ app.post('/hoststatus', (req, res) => {
 
 app.get('/uptime', (req, res) => {
 
-    console.log('<==========  Get  uptime ==========>');
+    console.log('<==========  Get uptime ==========>');
     myUptimes = {};
     
     for (let host in uptimes ) {
@@ -102,12 +102,13 @@ app.get('/uptime', (req, res) => {
 });
 
 app.post('/uptime', (req, res) => {
-    console.log('<==========  Post  uptime ==========>');
 
     const { hostname } = req.body;
     const { uptime } = req.body;
     const { lastupdate } = req.body;
     const { epoch } = req.body;
+    
+    console.log('<==========  Post uptime ' + hostname + ' ==========>');
 
     uptimes[hostname] = {
          hostname, uptime, lastupdate, epoch
@@ -124,7 +125,7 @@ app.post('/uptime', (req, res) => {
 
 app.get('/meminfo', (req, res) => {
 
-    console.log('<========== Get Menory Information ==========>');
+    console.log('<========== Get Memory Information ==========>');
     myStatus = {};
     
     for (let host in hostStatus ) {
