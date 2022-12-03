@@ -8,13 +8,21 @@ app.use(bodyParser.json());
 
 const posts = {};
 
-myHosts = {};
+myInitialHosts = {};
+myInitialUptimes = {};
 
-myHosts["creede"]  = {"hostname": "creede",  "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
-myHosts["creede1"] = {"hostname": "creede1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
-myHosts["ubuntu1"] = {"hostname": "ubuntu1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
-myHosts["ubuntu2"] = {"hostname": "ubuntu2", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
-myHosts["ubuntu3"] = {"hostname": "ubuntu3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myInitialHosts["creede"]  = {"hostname": "creede",  "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myInitialHosts["creede1"] = {"hostname": "creede1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myInitialHosts["ubuntu1"] = {"hostname": "ubuntu1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myInitialHosts["ubuntu2"] = {"hostname": "ubuntu2", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myInitialHosts["ubuntu3"] = {"hostname": "ubuntu3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+
+
+myInitialUptimes["creede"]  = {"hostname": "creede",  "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} };
+myInitialUptimes["creede1"] = {"hostname": "creede1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} };
+myInitialUptimes["ubuntu1"] = {"hostname": "ubuntu1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} };
+myInitialUptimes["ubuntu2"] = {"hostname": "ubuntu2", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} };
+myInitialUptimes["ubuntu3"] = {"hostname": "ubuntu3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} };
 
 /*
 var testSleepES5 = function () {
@@ -43,7 +51,7 @@ var exec = require('child_process').exec;
 app.get('/hoststatus', (req, res) => {
 
     console.log('<========== Get hoststatus ==========>');
-    myStatus = {};
+    myStatus = myInitialHosts;
     
     for (let host in hostStatus ) {
         
@@ -89,7 +97,7 @@ app.post('/hoststatus', (req, res) => {
 app.get('/uptime', (req, res) => {
 
     console.log('<==========  Get uptime ==========>');
-    myUptimes = myHosts;
+    myUptimes = myInitialUptimes;
     
     for (let host in  uptimes) {
         console.log(host);
