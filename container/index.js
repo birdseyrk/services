@@ -10,11 +10,11 @@ const posts = {};
 
 myHosts = {};
 
-myHosts["creede"]  = {"hostname": {}, "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
-myHosts["creede1"] = {"hostname": {}, "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
-myHosts["ubuntu1"] = {"hostname": {}, "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
-myHosts["ubuntu2"] = {"hostname": {}, "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
-myHosts["ubuntu3"] = {"hostname": {}, "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myHosts["creede"]  = {"hostname": "creede", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myHosts["creede1"] = {"hostname": "creede1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myHosts["ubuntu1"] = {"hostname": "ubuntu1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myHosts["ubuntu2"] = {"hostname": "ubuntu2", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myHosts["ubuntu3"] = {"hostname": "ubuntu3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
 
 /*
 var testSleepES5 = function () {
@@ -93,7 +93,11 @@ app.get('/uptime', (req, res) => {
     
     for (let host in  myHosts /*uptimes*/ ) {
         console.log(host);
-        myUptimes[host] = {"hostname":uptimes[host].hostname, "uptime":uptimes[host].uptime, "lastupdate":uptimes[host].lastupdate, "epoch":uptimes[host].epoch};
+        if (myUptimes[host]) {
+            myUptimes[host] = {"hostname":uptimes[host].hostname, "uptime":uptimes[host].uptime, "lastupdate":uptimes[host].lastupdate, "epoch":uptimes[host].epoch};
+        } else {
+            myUptimes[host] = {"hostname":myHosts[host].hostname, "lastupdate":myHosts[host].lastupdate, "epoch":myHosts[host].epoch};
+        }
         //console.log(JSON.stringify(myUptimes));
         //console.log("=======================================================================");
 
