@@ -10,11 +10,11 @@ const posts = {};
 
 const myHosts = [];
 
-myHosts[creede]  = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
-myHosts[creede1] = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
-myHosts[ubuntu1] = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
-myHosts[ubuntu2] = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
-myHosts[ubuntu3] = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
+myHosts["creede"]  = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
+myHosts["creede1"] = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
+myHosts["ubuntu1"] = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
+myHosts["ubuntu2"] = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
+myHosts["ubuntu3"] = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
 
 /*
 var testSleepES5 = function () {
