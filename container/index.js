@@ -10,11 +10,11 @@ const posts = {};
 
 myHosts = {};
 
-myHosts["creede"]  = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
-myHosts["creede1"] = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
-myHosts["ubuntu1"] = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
-myHosts["ubuntu2"] = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
-myHosts["ubuntu3"] = {"lastepoch":0, "status": "red","lastupdate":"1900-01-01:00:00:00"};
+myHosts["creede"]  = {"hostname": {}, "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myHosts["creede1"] = {"hostname": {}, "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myHosts["ubuntu1"] = {"hostname": {}, "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myHosts["ubuntu2"] = {"hostname": {}, "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myHosts["ubuntu3"] = {"hostname": {}, "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
 
 /*
 var testSleepES5 = function () {
@@ -89,7 +89,7 @@ app.get('/uptime', (req, res) => {
     console.log('<==========  Get uptime ==========>');
     myUptimes = {};
     
-    for (let host in uptimes ) {
+    for (let host in  myHosts /*uptimes*/ ) {
         myUptimes[host] = {"hostname":uptimes[host].hostname, "uptime":uptimes[host].uptime, "lastupdate":uptimes[host].lastupdate, "epoch":uptimes[host].epoch};
         //console.log(JSON.stringify(myUptimes));
         //console.log("=======================================================================");
@@ -107,7 +107,7 @@ app.post('/uptime', (req, res) => {
     const { uptime } = req.body;
     const { lastupdate } = req.body;
     const { epoch } = req.body;
-    
+
     console.log('<==========  Post uptime ' + hostname + ' ==========>');
 
     uptimes[hostname] = {
