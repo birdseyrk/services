@@ -1,0 +1,55 @@
+---
+
+- hosts: all
+  gather_facts: true
+
+  # Register the Ansible Variables
+  vars:
+    debug: false
+    sendRequest: true
+    lastUpdate: "{{ansible_date_time.date}}:{{ansible_date_time.time}}"
+    epoch: "{{ansible_date_time.epoch}}"
+
+
+  # defines the Ansible tasks
+
+  tasks:
+
+  # Cut the Uptime from the results
+  - name: Check uptime prior reboot
+    shell: cut -d ' ' -f1 /proc/uptime
+    register: uptimeoutput
+
+  # Print the hostname
+  - name: Print The hostname
+    ansible.builtin.debug:
+      var: serverstatus
+    when: debug
+
+  # Print the uptime
+  - name: Print The uptime
+    ansible.builtin.debug:
+      var: uptimeoutput.stdout_lines[0]
+    when: debug
+
+  # Print the current date
+  - name: Print the current date
+    ansible.builtin.debug:
+      #var: ansible_date_time.date
+      var: lastUpdate
+    when: debug
+
+  # Initialize the hostname
+  - name: Initialize the hostname data object
+    ansible.builtin.set_fact:
+      serverstatus: {"hostname":"{{ inventory_hostname }}","uptime":"{{uptimeoutput.stdout_lines[0] }}","lastupdate":"{{lastUpdate}}","epoch":"{{epoch}}" }
+
+  - name: POST from contents of local file
+    ansible.builtin.uri:
+      url: "http://192.168.1.102:8085/uptime"
+      method: POST
+      return_content: yes
+      body_format: "json"
+      body: "{{ serverstatus }}"
+      status_code: 201
+    when: sendRequest

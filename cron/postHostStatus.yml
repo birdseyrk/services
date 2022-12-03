@@ -1,0 +1,92 @@
+---
+
+- hosts: all
+  gather_facts: true
+
+  # Register the Ansible Variables
+  vars:
+    sendRequest: true
+    debug: false
+    lastUpdate: "{{ansible_date_time.date}}:{{ansible_date_time.time}}"
+    epoch: "{{ansible_date_time.epoch}}"
+
+  # defines the Ansible tasks
+  tasks:
+
+  # Cut the Uptime from the results
+  - name: Check uptime prior reboot
+    shell: cut -d ' ' -f1 /proc/uptime
+    register: uptimeoutput
+
+  # Print the uptime
+  - name: Print The uptime
+    ansible.builtin.debug:
+      var: uptimeoutput.stdout_lines[0]
+    when: debug
+
+  # Get Memory Variables from the results
+  - name: Memory Variables
+    shell: cat /proc/meminfo
+    register: meminfo
+
+  # Print the meminfo
+  - name: Print the meminfo
+    ansible.builtin.debug:
+      var: meminfo.stdout_lines
+    when: debug
+
+  # Get Memory Variables from the results
+  - name: Check uptime prior reboot
+    shell: df -h
+    register: diskinfo
+
+  # Print the diskinfo
+  - name: Print the diskinfo
+    ansible.builtin.debug:
+      var: diskinfo.stdout_lines
+    when: debug
+
+  # Get CPU Variables from the results
+  - name: CPU Variables
+    shell: cat /proc/cpuinfo
+    register: cpuinfo
+
+  # Print the cpuinfo
+  - name: Print the cpuinfo
+    ansible.builtin.debug:
+      var: cpuinfo.stdout_lines
+    when: debug
+
+
+  # Get Process Information
+  - name: Process Information
+    shell: ps auxw | grep ansadmin
+    register: processinfo
+
+  # Print the processinfo
+  - name: Print the processinfo
+    ansible.builtin.debug:
+      var: processinfo.stdout_lines
+    when: debug
+
+  # Initialize the hostname
+  - name: Initialize the hostname data object
+    ansible.builtin.set_fact:
+      serverstatus: {"hostname":"{{ inventory_hostname }}","uptime":"{{uptimeoutput.stdout_lines[0] }}","lastupdate":"{{lastUpdate}}","epoch":"{{epoch}}","meminfo":"{{meminfo.stdout_lines}}","diskinfo":"{{diskinfo.stdout_lines}}", "cpuinfo":"{{cpuinfo.stdout_lines}}","processinfo":"{{processinfo.stdout_lines}}" }
+
+
+  # Print the Server Status
+  - name: Print the Server Status
+    ansible.builtin.debug:
+      var: serverstatus
+    when: debug
+
+  - name: Post Host Status
+    ansible.builtin.uri:
+      url: "http://192.168.1.102:8085/hoststatus"
+      method: POST
+      return_content: yes
+      body_format: "json"
+      body: "{{ serverstatus }}"
+      status_code: 201
+    when: sendRequest
