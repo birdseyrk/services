@@ -105,7 +105,7 @@ app.get('/uptime', (req, res) => {
 
     }
 
-    console.log(JSON.stringify(myUptimes));
+    //console.log(JSON.stringify(myUptimes));
     res.send(myUptimes);
 });
 
