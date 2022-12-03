@@ -54,7 +54,7 @@ app.get('/hoststatus', (req, res) => {
         
     }
 
-    console.log(JSON.stringify(myStatus));
+    //console.log(JSON.stringify(myStatus));
     //res.send(JSON.stringify(myStatus));
     res.send(myStatus);
 });
