@@ -108,7 +108,7 @@ app.get('/uptime', (req, res) => {
 
         myUptimes[host] = {"hostname":uptimes[host].hostname, "uptime":uptimes[host].uptime, "lastupdate":uptimes[host].lastupdate};
         console.log("=======================================================================");
-        console.log(JSON.stringify(myUptime));
+        console.log(JSON.stringify(myUptimes));
         //console.log(' uptime [ hostname:' + myUptimes[myUptime].hostname + ' uptime:'+  myUptimes[myUptime].uptime + ' lastupdate:'+  myUptimes[myUptime].lastupdate +']'); ;
         //console.log(JSON.stringify(uptimes[myUptime]));
     }
