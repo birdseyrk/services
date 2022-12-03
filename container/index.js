@@ -43,17 +43,17 @@ var exec = require('child_process').exec;
 app.get('/hoststatus', (req, res) => {
 
     console.log('<========== Get hoststatus ==========>');
-    myUptimes = {};
+    myStatus = {};
     
     for (let host in hostStatus ) {
-        myUptimes[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "meminfo":hostStatus[host].meminfo, "diskinfo":hostStatus[host].diskinfo, "cpuinfo":hostStatus[host].cpuinfo, "processinfo":hostStatus[host].processinfo};
+        myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "meminfo":hostStatus[host].meminfo, "diskinfo":hostStatus[host].diskinfo, "cpuinfo":hostStatus[host].cpuinfo, "processinfo":hostStatus[host].processinfo};
         //console.log(JSON.stringify(myUptimes));
         //console.log("=======================================================================");
         
     }
 
-    //res.send(hostname, uptime, lastupdate);
-    res.send(JSON.stringify(myUptimes));
+    console.log(JSON.stringify(myStatus));
+    res.send(JSON.stringify(myStatus));
 });
 
 app.post('/hoststatus', (req, res) => {
@@ -73,12 +73,11 @@ app.post('/hoststatus', (req, res) => {
         hostname, lastupdate, epoch, uptime, meminfo, diskinfo, cpuinfo, processinfo
     };
 
-    console.log('Hostname ===>' + JSON.stringify( hostStatus[hostname].hostname) +'<==='); 
-    console.log('uptime ===>' + JSON.stringify( hostStatus[hostname].uptime) +'<==='); 
-    console.log('lastupdate ===>' + JSON.stringify( hostStatus[hostname].lastupdate) +'<==='); 
-    console.log('epoch ===>' + JSON.stringify( hostStatus[hostname].epoch) +'<==='); 
-
-    console.log("=======================================================================");
+    // console.log('Hostname ===>' + JSON.stringify( hostStatus[hostname].hostname) +'<==='); 
+    // console.log('uptime ===>' + JSON.stringify( hostStatus[hostname].uptime) +'<==='); 
+    // console.log('lastupdate ===>' + JSON.stringify( hostStatus[hostname].lastupdate) +'<==='); 
+    // console.log('epoch ===>' + JSON.stringify( hostStatus[hostname].epoch) +'<==='); 
+    // console.log("=======================================================================");
     
     res.status(201).send(hostname);
 });
@@ -91,14 +90,12 @@ app.get('/uptime', (req, res) => {
     
     for (let host in uptimes ) {
         myUptimes[host] = {"hostname":uptimes[host].hostname, "uptime":uptimes[host].uptime, "lastupdate":uptimes[host].lastupdate, "epoch":uptimes[host].epoch};
-        console.log(JSON.stringify(myUptimes));
-        console.log("=======================================================================");
-        //console.log(' uptime [ hostname:' + myUptimes[myUptime].hostname + ' uptime:'+  myUptimes[myUptime].uptime + ' lastupdate:'+  myUptimes[myUptime].lastupdate +']'); ;
-        //console.log(JSON.stringify(uptimes[myUptime]));
-    }
-    console.log("Status myHosts " + JSON.stringify(myHosts));
+        //console.log(JSON.stringify(myUptimes));
+        //console.log("=======================================================================");
 
-    //res.send(hostname, uptime, lastupdate);
+    }
+
+    console.log(JSON.stringify(myUptimes));
     res.send(JSON.stringify(myUptimes));
 });
 
@@ -109,38 +106,17 @@ app.post('/uptime', (req, res) => {
     const { uptime } = req.body;
     const { lastupdate } = req.body;
     const { epoch } = req.body;
-    //Moved to hoststatus const { meminfo } = req.body;
-    //Moved to hoststatus const { diskinfo } = req.body;
-    //Moved to hoststatus const { cpuinfo } = req.body;
-    //Moved to hoststatus const { processinfo } = req.body;
-    //myStatus = {};
-
-    
-    //console.log("=======================================================================");
-    //console.log('Recieved uptime [' + JSON.stringify(req.body) +']'); 
 
     uptimes[hostname] = {
          hostname, uptime, lastupdate, epoch
     };
 
-    // hostStatus[hostname].hostname = hostname;
-    // hostStatus[hostname].uptime = uptime;
-    // hostStatus[hostname].lastupdate = lastupdate;
-    // hostStatus[hostname].epoch = epoch;
-
-    // myHosts[hostname].lastepoch = hostStatus[hostname].ephoc;
-    // myHosts[hostname].status = "green";
-    // myHosts[hostname].lastupdate = uptihostStatusmes[hostname].lastupdate;
-
-    console.log('Hostname ===>' + JSON.stringify( uptimes[hostname].hostname) +'<==='); 
-    console.log('uptime ===>' + JSON.stringify( uptimes[hostname].uptime) +'<==='); 
-    console.log('lastupdate ===>' + JSON.stringify( uptimes[hostname].lastupdate) +'<==='); 
-    console.log('epoch ===>' + JSON.stringify( uptimes[hostname].epoch) +'<==='); 
-
-    console.log("=======================================================================");
-    
-    //myStatus = {"hostname":hostStatus[hostname].hostname, "uptime":hostStatus[hostname].uptime, "lastupdate":hostStatus[hostname].lastupdate, "epoch":hostStatus[hostname].epoch};
-        
+    // console.log('Hostname ===>' + JSON.stringify( uptimes[hostname].hostname) +'<==='); 
+    // console.log('uptime ===>' + JSON.stringify( uptimes[hostname].uptime) +'<==='); 
+    // console.log('lastupdate ===>' + JSON.stringify( uptimes[hostname].lastupdate) +'<==='); 
+    // console.log('epoch ===>' + JSON.stringify( uptimes[hostname].epoch) +'<==='); 
+    // console.log("=======================================================================");
+     
     res.status(201).send(hostname);
 });  
 
