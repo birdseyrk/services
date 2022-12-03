@@ -53,7 +53,8 @@ app.get('/hoststatus', (req, res) => {
     }
 
     console.log(JSON.stringify(myStatus));
-    res.send(JSON.stringify(myStatus));
+    //res.send(JSON.stringify(myStatus));
+    res.send(myStatus);
 });
 
 app.post('/hoststatus', (req, res) => {
@@ -96,7 +97,8 @@ app.get('/uptime', (req, res) => {
     }
 
     console.log(JSON.stringify(myUptimes));
-    res.send(JSON.stringify(myUptimes));
+    //res.send(JSON.stringify(myUptimes));
+    res.send(myUptimes);
 });
 
 app.post('/uptime', (req, res) => {
