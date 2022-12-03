@@ -70,17 +70,17 @@ app.post('/hoststatus', (req, res) => {
     const { cpuinfo } = req.body;
     const { processinfo } = req.body;
 
-    //hostStatus[hostname] = {
-        ////hostname, uptime, lastupdate, epoch, meminfo, diskinfo, cpuinfo, processinfo
-        //hostname, meminfo, diskinfo, cpuinfo, processinfo
-    //};
+    hostStatus[hostname] = {
+        //hostname, uptime, lastupdate, epoch, meminfo, diskinfo, cpuinfo, processinfo
+        hostname, meminfo, diskinfo, cpuinfo, processinfo
+    };
 
-    hostStatus[hostname].hostname = hostname;
-    hostStatus[hostname].meminfo = meminfo;
-    hostStatus[hostname].diskinfo = diskinfo;
-    hostStatus[hostname].cpuinfo = cpuinfo;
-    hostStatus[hostname].processinfo = processinfo;
-    hostStatus[hostname].statusEpoch = epoch;
+    // hostStatus[hostname].hostname = hostname;
+    // hostStatus[hostname].meminfo = meminfo;
+    // hostStatus[hostname].diskinfo = diskinfo;
+    // hostStatus[hostname].cpuinfo = cpuinfo;
+    // hostStatus[hostname].processinfo = processinfo;
+    // hostStatus[hostname].statusEpoch = epoch;
 
     // console.log("=======================================================================");
     // console.log('Hostname ===>' + JSON.stringify( hostStatus[hostname].hostname) +'<==='); 
@@ -123,20 +123,20 @@ app.post('/uptime', (req, res) => {
     //Moved to hoststatus const { diskinfo } = req.body;
     //Moved to hoststatus const { cpuinfo } = req.body;
     //Moved to hoststatus const { processinfo } = req.body;
-    myStatus = {};
+    //myStatus = {};
 
     
     //console.log("=======================================================================");
     //console.log('Recieved uptime [' + JSON.stringify(req.body) +']'); 
 
-    // hostStatus[hostname] = {
-    //     hostname, uptime, lastupdate, epoch, meminfo, diskinfo, cpuinfo, processinfo
-    // };
+    uptimes[hostname] = {
+         hostname, uptime, lastupdate, epoch
+    };
 
-    hostStatus[hostname].hostname = hostname;
-    hostStatus[hostname].uptime = uptime;
-    hostStatus[hostname].lastupdate = lastupdate;
-    hostStatus[hostname].epoch = epoch;
+    // hostStatus[hostname].hostname = hostname;
+    // hostStatus[hostname].uptime = uptime;
+    // hostStatus[hostname].lastupdate = lastupdate;
+    // hostStatus[hostname].epoch = epoch;
 
     // myHosts[hostname].lastepoch = hostStatus[hostname].ephoc;
     // myHosts[hostname].status = "green";
