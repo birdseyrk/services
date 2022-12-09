@@ -118,7 +118,7 @@ app.get('/uptime', (req, res) => {
     for (let host in  uptimes) {
         console.log(" adding " + host);
 
-        const myServer = Object.create(this.Server);
+        const myServer = {};
         myServer.hostname = uptimes[host].hostname;
         myServer.uptime = uptimes[host].uptime;
         myServer.lastupdate = uptimes[host].lastupdate;
