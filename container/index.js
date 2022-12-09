@@ -107,8 +107,9 @@ app.get('/uptime', (req, res) => {
     //myUptimes = myInitialUptimes;
     myUptimes = [];
     
+
     for (let host in  uptimes) {
-        
+        console.log(" adding " + host);
         myUptimes.push = {"hostname":uptimes[host].hostname, "uptime":uptimes[host].uptime, "lastupdate":uptimes[host].lastupdate, "epoch":uptimes[host].epoch};
        
         //console.log(JSON.stringify(myUptimes));
@@ -116,7 +117,7 @@ app.get('/uptime', (req, res) => {
 
     }
 
-    //console.log(JSON.stringify(myUptimes));
+    console.log(JSON.stringify(myUptimes));
     res.send(myUptimes);
 });
 
@@ -133,13 +134,21 @@ app.post('/uptime', (req, res) => {
          hostname, uptime, lastupdate, epoch
     };
 
-    // console.log('Hostname ===>' + JSON.stringify( uptimes[hostname].hostname) +'<==='); 
-    // console.log('uptime ===>' + JSON.stringify( uptimes[hostname].uptime) +'<==='); 
-    // console.log('lastupdate ===>' + JSON.stringify( uptimes[hostname].lastupdate) +'<==='); 
-    // console.log('epoch ===>' + JSON.stringify( uptimes[hostname].epoch) +'<==='); 
-    // console.log("=======================================================================");
+    console.log('Hostname ===>' + JSON.stringify( uptimes[hostname].hostname) +'<==='); 
+    console.log('uptime ===>' + JSON.stringify( uptimes[hostname].uptime) +'<==='); 
+    console.log('lastupdate ===>' + JSON.stringify( uptimes[hostname].lastupdate) +'<==='); 
+    console.log('epoch ===>' + JSON.stringify( uptimes[hostname].epoch) +'<==='); 
+    console.log("=======================================================================");
      
     res.status(201).send(hostname);
+});
+
+app.delete('/uptime', (req, res) => {
+
+    console.log('<==========  Delete uptime ==========>');
+    uptimes = {};
+     
+    res.status(201).send(uptimes);
 });
 
 app.get('/meminfo', (req, res) => {
