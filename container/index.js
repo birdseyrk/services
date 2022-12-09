@@ -116,7 +116,7 @@ app.get('/uptime', (req, res) => {
     
 
     for (let host in  uptimes) {
-        console.log(" adding " + host);
+        //console.log(" adding " + host);
 
         const myServer = {};
         myServer.hostname = uptimes[host].hostname;
@@ -124,17 +124,17 @@ app.get('/uptime', (req, res) => {
         myServer.lastupdate = uptimes[host].lastupdate;
         myServer.epoch = uptimes[host].epoch;
 
-        console.log("my server " + JSON.stringify(myServer));
+        //console.log("my server " + JSON.stringify(myServer));
         myUptimes .push(myServer);
 
         //myUptimes .push( new {"hostname":uptimes[host].hostname, "uptime":uptimes[host].uptime, "lastupdate":uptimes[host].lastupdate, "epoch":uptimes[host].epoch});
        
-        console.log(JSON.stringify(myUptimes));
-        console.log("=======================================================================");
+        //console.log(JSON.stringify(myUptimes));
+        //console.log("=======================================================================");
 
     }
 
-    console.log(JSON.stringify(myUptimes));
+    //console.log(JSON.stringify(myUptimes));
     res.send(myUptimes);
 });
 
