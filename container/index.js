@@ -105,15 +105,15 @@ app.get('/uptime', (req, res) => {
 
     console.log('<==========  Get uptime ==========>');
     //myUptimes = myInitialUptimes;
-    myUptimes = [];
+    myUptimes = {};
     
 
     for (let host in  uptimes) {
         console.log(" adding " + host);
         myUptimes.push = {"hostname":uptimes[host].hostname, "uptime":uptimes[host].uptime, "lastupdate":uptimes[host].lastupdate, "epoch":uptimes[host].epoch};
        
-        //console.log(JSON.stringify(myUptimes));
-        //console.log("=======================================================================");
+        console.log(JSON.stringify(myUptimes));
+        console.log("=======================================================================");
 
     }
 
