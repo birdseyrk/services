@@ -53,7 +53,7 @@ testSleepES5();
 */
 
 
-const uptimes = {};
+uptimes = {};
 const hostStatus = {};
 const svrhostname = {};
 const svruptime = {};
