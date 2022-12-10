@@ -138,6 +138,30 @@ app.get('/uptime', (req, res) => {
     res.send(myUptimes);
 });
 
+
+app.get('/uptime:host', (req, res) => {
+
+    console.log('<==========  Get uptime by Host ==========>');
+    host = req.params.host;
+    console.log(host);
+    //myUptimes = myInitialUptimes;
+
+    // for (let host in  uptimes) {
+    //     //console.log(" adding " + host);
+
+    //     const myServer = {};
+    //     myServer.hostname = uptimes[host].hostname;
+    //     myServer.uptime = uptimes[host].uptime;
+    //     myServer.lastupdate = uptimes[host].lastupdate;
+    //     myServer.epoch = uptimes[host].epoch;
+
+    //     myUptimes .push(myServer);
+    // }
+
+    //console.log(JSON.stringify(myUptimes));
+    res.send(uptimes[host]);
+});
+
 app.post('/uptime', (req, res) => {
 
     const { hostname } = req.body;
