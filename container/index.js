@@ -138,27 +138,11 @@ app.get('/uptime', (req, res) => {
     res.send(myUptimes);
 });
 
-
 app.get('/uptime/:host', (req, res) => {
 
     console.log('<==========  Get uptime by Host ==========>');
     host = req.params.host;
-    console.log(host);
-    //myUptimes = myInitialUptimes;
-
-    // for (let host in  uptimes) {
-    //     //console.log(" adding " + host);
-
-    //     const myServer = {};
-    //     myServer.hostname = uptimes[host].hostname;
-    //     myServer.uptime = uptimes[host].uptime;
-    //     myServer.lastupdate = uptimes[host].lastupdate;
-    //     myServer.epoch = uptimes[host].epoch;
-
-    //     myUptimes .push(myServer);
-    // }
-
-    //console.log(JSON.stringify(myUptimes));
+    //console.log(host);
     res.send(uptimes[host]);
 });
 
@@ -208,6 +192,14 @@ app.get('/meminfo', (req, res) => {
     res.send(myStatus);
 });
 
+app.get('/meminfo/:host', (req, res) => {
+
+    console.log('<==========  Get meminfo by Host ==========>');
+    host = req.params.host;
+    //console.log(host);
+    res.send(myStatus[host].meminfo);
+});
+
 app.get('/diskinfo', (req, res) => {
 
     console.log('<========== Get Disk Information ==========>');
@@ -222,6 +214,14 @@ app.get('/diskinfo', (req, res) => {
 
     //console.log(JSON.stringify(myStatus));
     res.send(myStatus);
+});
+
+app.get('/diskinfo/:host', (req, res) => {
+
+    console.log('<==========  Get diskinfo by Host ==========>');
+    host = req.params.host;
+    //console.log(host);
+    res.send(myStatus[host].diskinfo);
 });
 
 app.get('/cpuinfo', (req, res) => {
@@ -240,6 +240,14 @@ app.get('/cpuinfo', (req, res) => {
     res.send(myStatus);
 });
 
+app.get('/cpuinfo/:host', (req, res) => {
+
+    console.log('<==========  Get diskinfo by Host ==========>');
+    host = req.params.host;
+    //console.log(host);
+    res.send(myStatus[host].cpuinfo);
+});
+
 app.get('/processinfo', (req, res) => {
 
     console.log('<========== Get Process Information ==========>');
@@ -254,6 +262,14 @@ app.get('/processinfo', (req, res) => {
 
     //console.log(JSON.stringify(myStatus));
     res.send(myStatus);
+});
+
+app.get('/processinfo/:host', (req, res) => {
+
+    console.log('<==========  Get processinfo by Host ==========>');
+    host = req.params.host;
+    //console.log(host);
+    res.send(myStatus[host].processinfo);
 });
 
 app.listen(8085, () => {
