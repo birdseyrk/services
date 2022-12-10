@@ -197,7 +197,7 @@ app.get('/meminfo/:host', (req, res) => {
     console.log('<==========  Get meminfo by Host ==========>');
     host = req.params.host;
     //console.log(host);
-    res.send(myStatus[host].meminfo);
+    res.send(hostStatus[host].meminfo);
 });
 
 app.get('/diskinfo', (req, res) => {
@@ -221,7 +221,7 @@ app.get('/diskinfo/:host', (req, res) => {
     console.log('<==========  Get diskinfo by Host ==========>');
     host = req.params.host;
     //console.log(host);
-    res.send(myStatus[host].diskinfo);
+    res.send(hostStatus[host].diskinfo);
 });
 
 app.get('/cpuinfo', (req, res) => {
@@ -245,7 +245,7 @@ app.get('/cpuinfo/:host', (req, res) => {
     console.log('<==========  Get diskinfo by Host ==========>');
     host = req.params.host;
     //console.log(host);
-    res.send(myStatus[host].cpuinfo);
+    res.send(hostStatus[host].cpuinfo);
 });
 
 app.get('/processinfo', (req, res) => {
@@ -269,7 +269,7 @@ app.get('/processinfo/:host', (req, res) => {
     console.log('<==========  Get processinfo by Host ==========>');
     host = req.params.host;
     //console.log(host);
-    res.send(myStatus[host].processinfo);
+    res.send(hostStatus[host].processinfo);
 });
 
 app.listen(8085, () => {
