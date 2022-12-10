@@ -139,7 +139,7 @@ app.get('/uptime', (req, res) => {
 });
 
 
-app.get('/uptime:host', (req, res) => {
+app.get('/uptime/:host', (req, res) => {
 
     console.log('<==========  Get uptime by Host ==========>');
     host = req.params.host;
