@@ -83,7 +83,7 @@
 
   - name: Post Host Status
     ansible.builtin.uri:
-      url: "http://192.168.1.102:8085/hoststatus"
+      url: "http://192.168.1.100:8085/hoststatus"
       method: POST
       return_content: yes
       body_format: "json"
