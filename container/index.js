@@ -6,6 +6,13 @@ const { randomBytes } = require('crypto');
 
 const app = express();
 app.use(bodyParser.json());
+// Looks you can use this or cors() below.
+// app.use((req, res, next) => {
+//     res.setHeader('Acces-Control-Allow-Origin', '*');
+//     res.setHeader('Acces-Control-Allow-Methods', 'POST, GET, OPTIONS');
+//     res.setHeader('Access-COntrol-Allow-Headers', 'Content-Type, Authorization');
+//     next();
+// })
 app.use(cors());
 
 const posts = {};
