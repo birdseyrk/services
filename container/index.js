@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 //     res.setHeader('Access-COntrol-Allow-Headers', 'Content-Type, Authorization');
 //     next();
 // })
+
 app.use(cors());
 
 const posts = {};
