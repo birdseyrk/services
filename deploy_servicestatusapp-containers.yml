@@ -1,7 +1,0 @@
----
-
-- hosts: serverhosts
-
-  tasks:
-  - name: create servicestatus
-    command: docker run -d --name servicestatus-app -h server1   --ip 172.17.0.101  -p 8085:8085 birdseyrk/servicestatus:latest
