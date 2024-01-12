@@ -1,0 +1,7 @@
+---
+- name: Deploy k8s file.
+  hosts: "{{ myhost | default('k8s') }}"
+
+  tasks:
+  - name: deploy k8s by file
+    command: kubectl apply -f "{{myfile}}"
