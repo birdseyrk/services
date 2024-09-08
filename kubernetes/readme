@@ -1,0 +1,20 @@
+I have not figured out how to deploy the service going through ingress.
+I did have it working
+
+This does not need the ingress, but the complete setup does.  See serveruistatus kubernetes
+
+ubuntu1
+/share/dev/1-kubernetes-deployments/serverstatus
+
+kubectl apply -f server-deployment.yaml
+kubectl apply -f server-service-nodeport.yaml
+
+http://192.168.1.100:30850/uptime  nodeport
+http://192.168.1.100:30850/meminfo
+http://192.168.1.100:30850/diskinfo
+http://192.168.1.100:30850/cpuinfo
+http://192.168.1.100:30850/processinfo
+
+kubectl delete -f server-deployment.yaml
+kubectl delete -f server-service-nodeport.yaml
+

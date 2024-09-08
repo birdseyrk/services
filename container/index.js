@@ -28,11 +28,12 @@ const Server = {
 myInitialHosts = {};
 myInitialUptimes = {};
 
-myInitialHosts["creede"]  = {"hostname": "creede",  "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
-myInitialHosts["creede1"] = {"hostname": "creede1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
-myInitialHosts["ubuntu1"] = {"hostname": "ubuntu1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
-myInitialHosts["ubuntu2"] = {"hostname": "ubuntu2", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
-myInitialHosts["ubuntu3"] = {"hostname": "ubuntu3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} };
+myInitialHosts["creede"]  = {"hostname": "creede",  "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{}};
+myInitialHosts["creede1"] = {"hostname": "creede1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
+myInitialHosts["ubuntu1"] = {"hostname": "ubuntu1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
+myInitialHosts["ubuntu2"] = {"hostname": "ubuntu2", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
+myInitialHosts["ubuntu3"] = {"hostname": "ubuntu3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
+myInitialHosts["172.17.0.3"] = {"hostname": "172.17.0.3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
 
 
 // myInitialUptimes["creede"]  = {"hostname": "creede",  "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} };
@@ -45,7 +46,9 @@ myInitialUptimes  = [
     {"hostname": "creede",  "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
     {"hostname": "ubuntu1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
     {"hostname": "ubuntu2", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
-    {"hostname": "ubuntu3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} }
+    {"hostname": "ubuntu3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+    {"hostname": "node1",   "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+    {"hostname": "172.17.0.3",   "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} }
 ];
 
 
@@ -63,6 +66,7 @@ testSleepES5();
 
 uptimes = {};
 const hostStatus = {};
+const newhostStatus = {};
 const svrhostname = {};
 const svruptime = {};
 const svrlastupdate = {};
@@ -87,6 +91,99 @@ app.get('/hoststatus', (req, res) => {
     }
 
     res.send(myStatus);
+});
+
+app.post('/newhoststatus', (req, res) => {
+
+    // serverstatus: {
+    //         "hostname":"{{inventory_hostname}}", 
+    //     "os":"{{myDistribution}}", 
+    //     "osversion":"{{ansible_facts.distribution_version}}",
+    //     "groups":"{{myGroups}}", 
+    //     "local":"{{myLocal}}",
+    //     "uptime":"{{uptime.stdout}}",
+    //     "memory":"{{myMemory}}",
+    //     "lastUpdate":"{{lastUpdate}}",
+    //     "epoch":"{{myEpoch}}",
+    //     "subagent":"{{mySubagent}}",
+    //     "nodemanagers":"{{myNodeManager}}",
+    //     "checksum":"{{checksums.results}}",
+    //     "opstotal":"{{opsdisk.size_total|filesizeformat(True)}}",
+    //     "opsavail":"{{opsdisk.size_available|filesizeformat(True)}}",
+    //     "opsused":"{{opsused|filesizeformat(True)}} ",
+    //     "opspercent":"{{opspercent}}%",
+        
+    //     "logtotal":"{{logdisk.size_total|filesizeformat(True)}}",
+    //     "logavail":"{{logdisk.size_available|filesizeformat(True)}}",
+    //     "logused":"{{logused|filesizeformat(True)}}",
+    //     "logpercent":"{{logpercent}}%",
+        
+    //     "tmptotal":"{{tmpdisk.size_total|filesizeformat(True)}}",
+    //     "tmpavail":"{{tmpdisk.size_available|filesizeformat(True)}}",
+    //     "tmpused":"{{tmpused|filesizeformat(True)}}",
+    //     "tmppercent":"{{tmppercent}}%",
+    //     }
+    
+    const { hostname } = req.body;
+    const { os } = req.body;
+    const { osversion } = req.body;
+    const { groups } = req.body;
+    const { local } = req.body;
+    const { uptime } = req.body;
+    const { memory } = req.body;
+    const { lastupdate } = req.body;
+    const { epoch } = req.body;
+    const { subagent } = req.body;
+    const { nodemanagers } = req.body;
+    const { checksum } = req.body;
+
+    const { opstotal } = req.body;
+    const { opsavail } = req.body;
+    const { opsused } = req.body;
+    const { opspercent } = req.body;
+    
+    const { logtotal } = req.body;
+    const { logavail } = req.body;
+    const { logused } = req.body;
+    const { logpercent } = req.body;
+    
+    const { tmptotal } = req.body;
+    const { tmpavail } = req.body;
+    const { tmpused } = req.body;
+    const { tmppercent } = req.body;
+
+    console.log('<==========  Post newhoststatus ' + hostname + '==========>'); 
+
+    newhostStatus[hostname] = {
+        hostname, os, osversion, groups, local, uptime, memory, lastupdate, epoch, subagent, nodemanagers, checksum, opstotal, opsavail, opsused, opspercent, logtotal, logavail, logused, logpercent, tmptotal, tmpavail, tmpused, tmppercent
+    };
+
+    console.log('Hostname ===>' + JSON.stringify( hostStatus[hostname].hostname) +'<==='); 
+    console.log('os ===>' + JSON.stringify( hostStatus[hostname].os) +'<==='); 
+    console.log('osversion ===>' + JSON.stringify( hostStatus[hostname].osversion) +'<==='); 
+    console.log('local ===>' + JSON.stringify( hostStatus[hostname].local) +'<==='); 
+    console.log('uptime ===>' + JSON.stringify( hostStatus[hostname].uptime) +'<==='); 
+    console.log('memory ===>' + JSON.stringify( hostStatus[hostname].memory) +'<==='); 
+    console.log('lastupdate ===>' + JSON.stringify( hostStatus[hostname].lastupdate) +'<==='); 
+    console.log('epoch ===>' + JSON.stringify( hostStatus[hostname].epoch) +'<==='); 
+    console.log('subagent ===>' + JSON.stringify( hostStatus[hostname].subagent) +'<==='); 
+    console.log('nodemanagers ===>' + JSON.stringify( hostStatus[hostname].nodemanagers) +'<==='); 
+    console.log('checksum ===>' + JSON.stringify( hostStatus[hostname].checksum) +'<==='); 
+    console.log('opstotal ===>' + JSON.stringify( hostStatus[hostname].opstotal) +'<==='); 
+    console.log('opsavail ===>' + JSON.stringify( hostStatus[hostname].opsavail) +'<==='); 
+    console.log('opsused ===>' + JSON.stringify( hostStatus[hostname].opsused) +'<==='); 
+    console.log('opspercent ===>' + JSON.stringify( hostStatus[hostname].opspercent) +'<==='); 
+    console.log('logtotal ===>' + JSON.stringify( hostStatus[hostname].logtotal) +'<==='); 
+    console.log('logavail ===>' + JSON.stringify( hostStatus[hostname].logavail) +'<==='); 
+    console.log('logused ===>' + JSON.stringify( hostStatus[hostname].logused) +'<==='); 
+    console.log('logpercent ===>' + JSON.stringify( hostStatus[hostname].logpercent) +'<==='); 
+    console.log('tmptotal ===>' + JSON.stringify( hostStatus[hostname].tmptotal) +'<==='); 
+    console.log('tmpavail ===>' + JSON.stringify( hostStatus[hostname].tmpavail) +'<==='); 
+    console.log('tmpused ===>' + JSON.stringify( hostStatus[hostname].tmpused) +'<==='); 
+    console.log('tmppercent ===>' + JSON.stringify( hostStatus[hostname].tmppercent) +'<==='); 
+    console.log("=======================================================================");
+    
+    res.status(201).send(hostname);
 });
 
 app.post('/hoststatus', (req, res) => {
@@ -206,6 +303,30 @@ app.get('/meminfo/:host', (req, res) => {
     host = req.params.host;
     //console.log(host);
     res.send(hostStatus[host].meminfo);
+});
+
+app.get('/os', (req, res) => {
+
+    console.log('<========== Get os Information ==========>');
+    myStatus = {};
+    
+    for (let host in hostStatus ) {
+        myStatus[host] = {"hostname":newhostStatus[host].hostname, "lastupdate":newhostStatus[host].lastupdate, "epoch":newhostStatus[host].epoch, "uptime":newhostStatus[host].uptime, "os":newhostStatus[host].os};
+        //console.log(JSON.stringify(myUptimes));
+        //console.log("=======================================================================");
+        
+    }
+
+    //console.log(JSON.stringify(myStatus));
+    res.send(myStatus);
+});
+
+app.get('/os/:host', (req, res) => {
+
+    console.log('<==========  Get os by Host ==========>');
+    host = req.params.host;
+    console.log(host);
+    res.send(newhostStatus[host].os);
 });
 
 app.get('/diskinfo', (req, res) => {

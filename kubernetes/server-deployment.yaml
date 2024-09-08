@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: serverstatus-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: serverstatus
+  template:
+    metadata:
+      labels:
+        app: serverstatus
+    spec:
+      containers:
+        - name: serverstatus
+          image: birdseyrk/servicestatus:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8085
