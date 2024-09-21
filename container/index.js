@@ -368,7 +368,7 @@ app.get('/os', (req, res) => {
     myStatus = {};
     
     for (let host in newhostStatus ) {
-        myStatus[host] = {"hostname":newhostStatus[host].hostname, "lastupdate":newhostStatus[host].lastupdate, "epoch":newhostStatus[host].epoch, "uptime":newhostStatus[host].uptime, "os":newhostStatus[host].os};
+        myStatus[host] = {"hostname":newhostStatus[host].hostname, "os":newhostStatus[host].os};
         //console.log(JSON.stringify(myUptimes));
         //console.log("=======================================================================");
         

@@ -9,11 +9,13 @@ ubuntu1
 kubectl apply -f server-deployment.yaml
 kubectl apply -f server-service-nodeport.yaml
 
-http://192.168.1.100:30850/uptime  nodeport
-http://192.168.1.100:30850/meminfo
-http://192.168.1.100:30850/diskinfo
-http://192.168.1.100:30850/cpuinfo
-http://192.168.1.100:30850/processinfo
+http://nginx.ingress.192.168.1.100.nip.io:30850/os/
+
+http://nginx.ingress.192.168.1.100.nip.io:30850/uptime  nodeport
+http://nginx.ingress.192.168.1.100.nip.io:30850/meminfo
+http://nginx.ingress.192.168.1.100.nip.io:30850/diskinfo
+http://nginx.ingress.192.168.1.100.nip.io:30850/cpuinfo
+http://nginx.ingress.192.168.1.100.nip.io:30850/processinfo
 
 kubectl delete -f server-deployment.yaml
 kubectl delete -f server-service-nodeport.yaml
