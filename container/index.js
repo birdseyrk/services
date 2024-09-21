@@ -77,14 +77,45 @@ const svrprocessinfo = {};
 
 var exec = require('child_process').exec;
 
-app.get('/hoststatus', (req, res) => {
 
-    console.log('<========== Get hoststatus ==========>');
+
+app.get('/newhoststatus', (req, res) => {
+
+    console.log('<========== Get newhoststatus ==========>');
     myStatus = myInitialHosts;
     
-    for (let host in hostStatus ) {
+    for (let host in newhoststatus ) {
         
-        myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "meminfo":hostStatus[host].meminfo, "diskinfo":hostStatus[host].diskinfo, "cpuinfo":hostStatus[host].cpuinfo, "processinfo":hostStatus[host].processinfo};
+        myStatus[host] = {
+            "checksum":newhostStatus[host].checksum, 
+            "epoch":newhostStatus[host].epoch, 
+            "groups":newhostStatus[host].groups, 
+            "hostname":newhostStatus[host].hostname, 
+            "lastupdate":newhostStatus[host].lastupdate, 
+            "local":newhostStatus[host].local, 
+            "logavail":newhostStatus[host].logavail, 
+            "logpercent":newhoststatus[host].logpercent,
+        
+            "logtotal":newhoststatus[host].logtotal,
+            "logused":newhoststatus[host].logused,
+            "memory":newhoststatus[host].memory,
+            "nodemanagers":newhoststatus[host].nodemanagers,
+            "opsavail":newhoststatus[host].opsavail,
+            "opspercent":newhoststatus[host].opspercent,
+            "opstotal":newhoststatus[host].opstotal,
+            "opsused":newhoststatus[host].opsused,
+            "os":newhoststatus[host].os,
+            "osversion":newhoststatus[host].osversion,
+            "subagent":newhoststatus[host].subagent,
+            "tmpavail":newhoststatus[host].tmpavail,
+            "tmppercent":newhoststatus[host].tmppercent,
+            "tmptotal":newhoststatus[host].tmptotal,
+            "tmpused":newhoststatus[host].tmpused,
+            "uptime":newhoststatus[host].uptime
+        
+        
+        };
+        
         //console.log(JSON.stringify(myUptimes));
         //console.log("=======================================================================");
         
@@ -155,35 +186,51 @@ app.post('/newhoststatus', (req, res) => {
     console.log('<==========  Post newhoststatus ' + hostname + '==========>'); 
 
     newhostStatus[hostname] = {
-        hostname, os, osversion, groups, local, uptime, memory, lastupdate, epoch, subagent, nodemanagers, checksum, opstotal, opsavail, opsused, opspercent, logtotal, logavail, logused, logpercent, tmptotal, tmpavail, tmpused, tmppercent
+        checksum, epoch, groups, hostname, lastupdate, local, logavail, logpercent, logtotal, logused, memory, nodemanagers, opsavail, opspercent, opstotal, opsused, os, osversion, subagent, tmpavail, tmppercent, tmptotal, tmpused, uptime
     };
 
-    console.log('Hostname ===>' + JSON.stringify( hostStatus[hostname].hostname) +'<==='); 
-    console.log('os ===>' + JSON.stringify( hostStatus[hostname].os) +'<==='); 
-    console.log('osversion ===>' + JSON.stringify( hostStatus[hostname].osversion) +'<==='); 
-    console.log('local ===>' + JSON.stringify( hostStatus[hostname].local) +'<==='); 
-    console.log('uptime ===>' + JSON.stringify( hostStatus[hostname].uptime) +'<==='); 
-    console.log('memory ===>' + JSON.stringify( hostStatus[hostname].memory) +'<==='); 
-    console.log('lastupdate ===>' + JSON.stringify( hostStatus[hostname].lastupdate) +'<==='); 
-    console.log('epoch ===>' + JSON.stringify( hostStatus[hostname].epoch) +'<==='); 
-    console.log('subagent ===>' + JSON.stringify( hostStatus[hostname].subagent) +'<==='); 
-    console.log('nodemanagers ===>' + JSON.stringify( hostStatus[hostname].nodemanagers) +'<==='); 
-    console.log('checksum ===>' + JSON.stringify( hostStatus[hostname].checksum) +'<==='); 
-    console.log('opstotal ===>' + JSON.stringify( hostStatus[hostname].opstotal) +'<==='); 
-    console.log('opsavail ===>' + JSON.stringify( hostStatus[hostname].opsavail) +'<==='); 
-    console.log('opsused ===>' + JSON.stringify( hostStatus[hostname].opsused) +'<==='); 
-    console.log('opspercent ===>' + JSON.stringify( hostStatus[hostname].opspercent) +'<==='); 
-    console.log('logtotal ===>' + JSON.stringify( hostStatus[hostname].logtotal) +'<==='); 
-    console.log('logavail ===>' + JSON.stringify( hostStatus[hostname].logavail) +'<==='); 
-    console.log('logused ===>' + JSON.stringify( hostStatus[hostname].logused) +'<==='); 
-    console.log('logpercent ===>' + JSON.stringify( hostStatus[hostname].logpercent) +'<==='); 
-    console.log('tmptotal ===>' + JSON.stringify( hostStatus[hostname].tmptotal) +'<==='); 
-    console.log('tmpavail ===>' + JSON.stringify( hostStatus[hostname].tmpavail) +'<==='); 
-    console.log('tmpused ===>' + JSON.stringify( hostStatus[hostname].tmpused) +'<==='); 
-    console.log('tmppercent ===>' + JSON.stringify( hostStatus[hostname].tmppercent) +'<==='); 
+    console.log('Hostname ===>' + JSON.stringify( newhostStatus[hostname].hostname) +'<==='); 
+    console.log('os ===>' + JSON.stringify( newhostStatus[hostname].os) +'<==='); 
+    console.log('osversion ===>' + JSON.stringify( newhostStatus[hostname].osversion) +'<==='); 
+    console.log('local ===>' + JSON.stringify( newhostStatus[hostname].local) +'<==='); 
+    console.log('uptime ===>' + JSON.stringify( newhostStatus[hostname].uptime) +'<==='); 
+    console.log('memory ===>' + JSON.stringify( newhostStatus[hostname].memory) +'<==='); 
+    console.log('lastupdate ===>' + JSON.stringify( newhostStatus[hostname].lastupdate) +'<==='); 
+    console.log('epoch ===>' + JSON.stringify( newhostStatus[hostname].epoch) +'<==='); 
+    console.log('subagent ===>' + JSON.stringify( newhostStatus[hostname].subagent) +'<==='); 
+    console.log('nodemanagers ===>' + JSON.stringify( newhostStatus[hostname].nodemanagers) +'<==='); 
+    console.log('checksum ===>' + JSON.stringify( newhostStatus[hostname].checksum) +'<==='); 
+    console.log('opstotal ===>' + JSON.stringify( newhostStatus[hostname].opstotal) +'<==='); 
+    console.log('opsavail ===>' + JSON.stringify( newhostStatus[hostname].opsavail) +'<==='); 
+    console.log('opsused ===>' + JSON.stringify( newhostStatus[hostname].opsused) +'<==='); 
+    console.log('opspercent ===>' + JSON.stringify( newhostStatus[hostname].opspercent) +'<==='); 
+    console.log('logtotal ===>' + JSON.stringify( newhostStatus[hostname].logtotal) +'<==='); 
+    console.log('logavail ===>' + JSON.stringify( newhostStatus[hostname].logavail) +'<==='); 
+    console.log('logused ===>' + JSON.stringify( newhostStatus[hostname].logused) +'<==='); 
+    console.log('logpercent ===>' + JSON.stringify( newhostStatus[hostname].logpercent) +'<==='); 
+    console.log('tmptotal ===>' + JSON.stringify( newhostStatus[hostname].tmptotal) +'<==='); 
+    console.log('tmpavail ===>' + JSON.stringify( newhostStatus[hostname].tmpavail) +'<==='); 
+    console.log('tmpused ===>' + JSON.stringify( newhostStatus[hostname].tmpused) +'<==='); 
+    console.log('tmppercent ===>' + JSON.stringify( newhostStatus[hostname].tmppercent) +'<==='); 
     console.log("=======================================================================");
     
     res.status(201).send(hostname);
+});
+
+app.get('/hoststatus', (req, res) => {
+
+    console.log('<========== Get hoststatus ==========>');
+    myStatus = myInitialHosts;
+    
+    for (let host in hostStatus ) {
+        
+        myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "meminfo":hostStatus[host].meminfo, "diskinfo":hostStatus[host].diskinfo, "cpuinfo":hostStatus[host].cpuinfo, "processinfo":hostStatus[host].processinfo};
+        //console.log(JSON.stringify(myUptimes));
+        //console.log("=======================================================================");
+        
+    }
+
+    res.send(myStatus);
 });
 
 app.post('/hoststatus', (req, res) => {
