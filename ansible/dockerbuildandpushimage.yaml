@@ -5,7 +5,7 @@
   - name: create node image
     command: docker build -t servicestatus:latest .
     args:
-     chdir: /local/docker/statusServices/container
+     chdir: /local/statusServices/docker
 
   - name: create tag to push image onto docker hub
     command: docker tag servicestatus:latest birdseyrk/servicestatus:latest
