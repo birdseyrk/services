@@ -380,7 +380,7 @@ app.get('/os', (req, res) => {
 
 app.get('/os/:host', (req, res) => {
 
-    console.log('<==========  Get os by Host ==========>');
+    console.log('<==========  Get os by Host  ==========>');
     host = req.params.host;
     console.log(host);
     res.send({"hostname":newhostStatus[host].hostname, "os":newhostStatus[host].os, "osversion":newhostStatus[host].osversion});
