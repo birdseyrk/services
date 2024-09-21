@@ -368,7 +368,7 @@ app.get('/os', (req, res) => {
     myStatus = {};
     
     for (let host in newhostStatus ) {
-        myStatus[host] = {"hostname":newhostStatus[host].hostname, "os":newhostStatus[host].os};
+        myStatus[host] = {"hostname":newhostStatus[host].hostname, "os":newhostStatus[host].os, "osversion":newhostStatus[host].osversion};
         //console.log(JSON.stringify(myUptimes));
         //console.log("=======================================================================");
         
@@ -383,7 +383,7 @@ app.get('/os/:host', (req, res) => {
     console.log('<==========  Get os by Host ==========>');
     host = req.params.host;
     console.log(host);
-    res.send(newhostStatus[host].os);
+    res.send({"hostname":newhostStatus[host].hostname, "os":newhostStatus[host].os, "osversion":newhostStatus[host].osversion});
 });
 
 app.get('/diskinfo', (req, res) => {
