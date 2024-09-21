@@ -40,7 +40,7 @@ myInitialHosts["ansible-master"] = {"hostname": "ansible-master", "lastupdate": 
 
 myInitialNewHosts["creede"]          = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"creede",         "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
 myInitialNewHosts["creede02"]        = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"creede02",       "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
-myInitialNewHosts["creede02"]        = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"creede03",       "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
+myInitialNewHosts["creede03"]        = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"creede03",       "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
 myInitialNewHosts["ubuntu1"]         = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"ubuntu1",        "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
 myInitialNewHosts["ubuntu2"]         = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"ubuntu2",        "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
 myInitialNewHosts["ubuntu3"]         = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"ubuntu3",        "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
@@ -55,7 +55,7 @@ myInitialNewHosts["ansible-master"]  = {"checksum":{}, "epoch":{}, "groups":{}, 
 myInitialUptimes  = [
     {"hostname": "creede",           "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
     {"hostname": "creede02",         "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
-    {"hostname": "creede02",         "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+    {"hostname": "creede03",         "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
     {"hostname": "ubuntu1",          "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
     {"hostname": "ubuntu2",          "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
     {"hostname": "ubuntu3",          "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
@@ -95,7 +95,7 @@ app.get('/newhoststatus', (req, res) => {
     console.log('<========== Get newhoststatus ==========>');
     myStatus = myInitialNewHosts;
     
-    for (let host in newhoststatus ) {
+    for (let host in newhostStatus ) {
         
         myStatus[host] = {
             "checksum":newhostStatus[host].checksum, 
@@ -105,24 +105,24 @@ app.get('/newhoststatus', (req, res) => {
             "lastupdate":newhostStatus[host].lastupdate, 
             "local":newhostStatus[host].local, 
             "logavail":newhostStatus[host].logavail, 
-            "logpercent":newhoststatus[host].logpercent,
+            "logpercent":newhostStatus[host].logpercent//,
         
-            "logtotal":newhoststatus[host].logtotal,
-            "logused":newhoststatus[host].logused,
-            "memory":newhoststatus[host].memory,
-            "nodemanagers":newhoststatus[host].nodemanagers,
-            "opsavail":newhoststatus[host].opsavail,
-            "opspercent":newhoststatus[host].opspercent,
-            "opstotal":newhoststatus[host].opstotal,
-            "opsused":newhoststatus[host].opsused,
-            "os":newhoststatus[host].os,
-            "osversion":newhoststatus[host].osversion,
-            "subagent":newhoststatus[host].subagent,
-            "tmpavail":newhoststatus[host].tmpavail,
-            "tmppercent":newhoststatus[host].tmppercent,
-            "tmptotal":newhoststatus[host].tmptotal,
-            "tmpused":newhoststatus[host].tmpused,
-            "uptime":newhoststatus[host].uptime
+            // "logtotal":newhostStatus[host].logtotal,
+            // "logused":newhostStatus[host].logused,
+            // "memory":newhostStatus[host].memory,
+            // "nodemanagers":newhostStatus[host].nodemanagers,
+            // "opsavail":newhostStatus[host].opsavail,
+            // "opspercent":newhostStatus[host].opspercent,
+            // "opstotal":newhostStatus[host].opstotal,
+            // "opsused":newhostStatus[host].opsused,
+            // "os":newhostStatus[host].os,
+            // "osversion":newhostStatus[host].osversion,
+            // "subagent":newhostStatus[host].subagent,
+            // "tmpavail":newhostStatus[host].tmpavail,
+            // "tmppercent":newhostStatus[host].tmppercent,
+            // "tmptotal":newhostStatus[host].tmptotal,
+            // "tmpused":newhostStatus[host].tmpused,
+            // "uptime":newhostStatus[host].uptime
         };
         
         //console.log(JSON.stringify(myUptimes));
@@ -133,7 +133,7 @@ app.get('/newhoststatus', (req, res) => {
     res.send(myStatus);
 });
 
-app.post('/newhoststatus', (req, res) => {
+app.post('/newhostStatus', (req, res) => {
 
     // serverstatus: {
     //         "hostname":"{{inventory_hostname}}", 
@@ -366,7 +366,7 @@ app.get('/os', (req, res) => {
     console.log('<========== Get os Information ==========>');
     myStatus = {};
     
-    for (let host in hostStatus ) {
+    for (let host in newhostStatus ) {
         myStatus[host] = {"hostname":newhostStatus[host].hostname, "lastupdate":newhostStatus[host].lastupdate, "epoch":newhostStatus[host].epoch, "uptime":newhostStatus[host].uptime, "os":newhostStatus[host].os};
         //console.log(JSON.stringify(myUptimes));
         //console.log("=======================================================================");
