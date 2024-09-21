@@ -26,15 +26,25 @@ const Server = {
 }
 
 myInitialHosts = {};
+
+myInitialNewHosts = {};
 myInitialUptimes = {};
 
-myInitialHosts["creede"]  = {"hostname": "creede",  "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{}};
-myInitialHosts["creede1"] = {"hostname": "creede1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
-myInitialHosts["ubuntu1"] = {"hostname": "ubuntu1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
-myInitialHosts["ubuntu2"] = {"hostname": "ubuntu2", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
-myInitialHosts["ubuntu3"] = {"hostname": "ubuntu3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
-myInitialHosts["172.17.0.3"] = {"hostname": "172.17.0.3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
+myInitialHosts["creede"]         = {"hostname": "creede",         "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
+myInitialHosts["creede02"]       = {"hostname": "creede02",      "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
+myInitialHosts["creede03"]       = {"hostname": "creede03",      "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
+myInitialHosts["ubuntu1"]        = {"hostname": "ubuntu1",        "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
+myInitialHosts["ubuntu2"]        = {"hostname": "ubuntu2",        "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
+myInitialHosts["ubuntu3"]        = {"hostname": "ubuntu3",        "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
+myInitialHosts["ansible-master"] = {"hostname": "ansible-master", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
 
+myInitialNewHosts["creede"]          = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"creede",         "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
+myInitialNewHosts["creede02"]        = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"creede02",       "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
+myInitialNewHosts["creede02"]        = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"creede03",       "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
+myInitialNewHosts["ubuntu1"]         = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"ubuntu1",        "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
+myInitialNewHosts["ubuntu2"]         = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"ubuntu2",        "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
+myInitialNewHosts["ubuntu3"]         = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"ubuntu3",        "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
+myInitialNewHosts["ansible-master"]  = {"checksum":{}, "epoch":{}, "groups":{}, "hostname":"ansible-master", "lastupdate":"1970-01-01:00:00:00", "local":{}, "logavail":{}, "logpercent":{}, "logtotal":{}, "logused":{}, "memory":{}, "nodemanagers":{}, "opsavail":{}, "opspercent":{}, "opstotal":{}, "opsused":{}, "os":{}, "osversion":{}, "subagent":{}, "tmpavail":{}, "tmppercent":{}, "tmptotal":{}, "tmpused":{}, "uptime":{} };
 
 // myInitialUptimes["creede"]  = {"hostname": "creede",  "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} };
 // myInitialUptimes["creede1"] = {"hostname": "creede1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} };
@@ -43,12 +53,13 @@ myInitialHosts["172.17.0.3"] = {"hostname": "172.17.0.3", "lastupdate": "1970-01
 // myInitialUptimes["ubuntu3"] = {"hostname": "ubuntu3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} };
 
 myInitialUptimes  = [
-    {"hostname": "creede",  "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
-    {"hostname": "ubuntu1", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
-    {"hostname": "ubuntu2", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
-    {"hostname": "ubuntu3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
-    {"hostname": "node1",   "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
-    {"hostname": "172.17.0.3",   "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} }
+    {"hostname": "creede",           "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+    {"hostname": "creede02",         "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+    {"hostname": "creede02",         "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+    {"hostname": "ubuntu1",          "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+    {"hostname": "ubuntu2",          "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+    {"hostname": "ubuntu3",          "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+    {"hostname": "ansible-master",   "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} }
 ];
 
 
@@ -82,7 +93,7 @@ var exec = require('child_process').exec;
 app.get('/newhoststatus', (req, res) => {
 
     console.log('<========== Get newhoststatus ==========>');
-    myStatus = myInitialHosts;
+    myStatus = myInitialNewHosts;
     
     for (let host in newhoststatus ) {
         
@@ -112,8 +123,6 @@ app.get('/newhoststatus', (req, res) => {
             "tmptotal":newhoststatus[host].tmptotal,
             "tmpused":newhoststatus[host].tmpused,
             "uptime":newhoststatus[host].uptime
-        
-        
         };
         
         //console.log(JSON.stringify(myUptimes));
