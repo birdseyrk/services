@@ -115,15 +115,15 @@ app.get('/newhoststatus', (req, res) => {
             "opspercent":newhostStatus[host].opspercent,
             "opstotal":newhostStatus[host].opstotal,
             "opsused":newhostStatus[host].opsused,
-            "os":newhostStatus[host].os//,
+            "os":newhostStatus[host].os,
 
-            // "osversion":newhostStatus[host].osversion,
-            // "subagent":newhostStatus[host].subagent,
-            // "tmpavail":newhostStatus[host].tmpavail,
-            // "tmppercent":newhostStatus[host].tmppercent,
-            // "tmptotal":newhostStatus[host].tmptotal,
-            // "tmpused":newhostStatus[host].tmpused,
-            // "uptime":newhostStatus[host].uptime
+            "osversion":newhostStatus[host].osversion,
+            "subagent":newhostStatus[host].subagent,
+            "tmpavail":newhostStatus[host].tmpavail,
+            "tmppercent":newhostStatus[host].tmppercent,
+            "tmptotal":newhostStatus[host].tmptotal,
+            "tmpused":newhostStatus[host].tmpused,
+            "uptime":newhostStatus[host].uptime
         };
         
         //console.log(JSON.stringify(myUptimes));
