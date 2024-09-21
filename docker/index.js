@@ -363,7 +363,7 @@ app.get('/groups/:host', (req, res) => {
     console.log('<==========  Get groups by Host  ==========>');
     host = req.params.host;
     console.log(host);
-    res.send({"hostname":newhostStatus[host].hostname, "groups":newhostStatus[host].groups});
+    res.send(newhostStatus[host].groups);
 });
 
 app.get('/meminfo', (req, res) => {
