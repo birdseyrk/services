@@ -196,7 +196,7 @@ app.post('/newhostStatus', (req, res) => {
     console.log('<==========  Post newhoststatus ' + hostname + '==========>'); 
 
     newhostStatus[hostname] = {
-        checksum, epoch, groups, hostname, lastupdate, local, logavail, logpercent, logtotal, logused, memory, nodemanagers, opsavail, opspercent, opstotal, opsused, os, osversion, subagent, tmpavail, tmppercent, tmptotal, tmpused, uptime
+        checksum, cpuinfo, epoch, groups, hostname, lastupdate, local, logavail, logpercent, logtotal, logused, memory, nodemanagers, opsavail, opspercent, opstotal, opsused, os, osversion, processinfo, subagent, tmpavail, tmppercent, tmptotal, tmpused, uptime
     };
 
     console.log('Hostname ===>' + JSON.stringify( newhostStatus[hostname].hostname) +'<==='); 
@@ -205,6 +205,8 @@ app.post('/newhostStatus', (req, res) => {
     console.log('local ===>' + JSON.stringify( newhostStatus[hostname].local) +'<==='); 
     console.log('uptime ===>' + JSON.stringify( newhostStatus[hostname].uptime) +'<==='); 
     console.log('memory ===>' + JSON.stringify( newhostStatus[hostname].memory) +'<==='); 
+    console.log('cpuinfo ===>' + JSON.stringify( newhostStatus[hostname].cpuinfo) +'<==='); 
+    console.log('processinfo ===>' + JSON.stringify( newhostStatus[hostname].processinfo) +'<==='); 
     console.log('lastupdate ===>' + JSON.stringify( newhostStatus[hostname].lastupdate) +'<==='); 
     console.log('epoch ===>' + JSON.stringify( newhostStatus[hostname].epoch) +'<==='); 
     console.log('subagent ===>' + JSON.stringify( newhostStatus[hostname].subagent) +'<==='); 
@@ -343,8 +345,9 @@ app.get('/meminfo', (req, res) => {
     console.log('<========== Get Memory Information ==========>');
     myStatus = {};
     
-    for (let host in hostStatus ) {
-        myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "meminfo":hostStatus[host].meminfo};
+    for (let host in newhostStatus ) {
+        //myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "meminfo":hostStatus[host].meminfo};
+        myStatus[host] = {"hostname":newhostStatus[host].hostname, "lastupdate":newhostStatus[host].lastupdate, "epoch":newhostStatus[host].epoch, "uptime":newhostStatus[host].uptime, "meminfo":newhostStatus[host].memory};
         //console.log(JSON.stringify(myUptimes));
         //console.log("=======================================================================");
         
@@ -359,7 +362,7 @@ app.get('/meminfo/:host', (req, res) => {
     console.log('<==========  Get meminfo by Host ==========>');
     host = req.params.host;
     //console.log(host);
-    res.send(hostStatus[host].meminfo);
+    res.send(newhostStatus[host].memory);
 });
 
 app.get('/os', (req, res) => {
@@ -391,8 +394,9 @@ app.get('/diskinfo', (req, res) => {
     console.log('<========== Get Disk Information ==========>');
     myStatus = {};
     
-    for (let host in hostStatus ) {
-        myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "diskinfo":hostStatus[host].diskinfo};
+    for (let host in newhostStatus ) {
+        //myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "diskinfo":hostStatus[host].diskinfo};
+        myStatus[host] = {"hostname":newhostStatus[host].hostname, "lastupdate":newhostStatus[host].lastupdate, "epoch":newhostStatus[host].epoch, "uptime":newhostStatus[host].uptime, "opstotal":newhostStatus[host].opstotal, "opsavail":newhostStatus[host].opsavail, "opsused":newhostStatus[host].opsused, "opspercent":newhostStatus[host].opspercent, "logtotal":newhostStatus[host].logtotal, "logavail":newhostStatus[host].logavail, "logused":newhostStatus[host].logused, "logpercent":newhostStatus[host].logpercent, "tmptotal":newhostStatus[host].tmptotal, "tmpavail":newhostStatus[host].tmpavail, "tmpused":newhostStatus[host].tmpused, "tmppercent":newhostStatus[host].tmppercent};
         //console.log(JSON.stringify(myUptimes));
         //console.log("=======================================================================");
         
@@ -407,7 +411,8 @@ app.get('/diskinfo/:host', (req, res) => {
     console.log('<==========  Get diskinfo by Host ==========>');
     host = req.params.host;
     //console.log(host);
-    res.send(hostStatus[host].diskinfo);
+    //res.send(hostStatus[host].diskinfo);
+    res.send({"opstotal":newhostStatus[host].opstotal, "opsavail":newhostStatus[host].opsavail, "opsused":newhostStatus[host].opsused, "opspercent":newhostStatus[host].opspercent, "logtotal":newhostStatus[host].logtotal, "logavail":newhostStatus[host].logavail, "logused":newhostStatus[host].logused, "logpercent":newhostStatus[host].logpercent, "tmptotal":newhostStatus[host].tmptotal, "tmpavail":newhostStatus[host].tmpavail, "tmpused":newhostStatus[host].tmpused, "tmppercent":newhostStatus[host].tmppercent});
 });
 
 app.get('/cpuinfo', (req, res) => {
@@ -415,8 +420,8 @@ app.get('/cpuinfo', (req, res) => {
     console.log('<========== Get CPU Information ==========>');
     myStatus = {};
     
-    for (let host in hostStatus ) {
-        myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "cpuinfo":hostStatus[host].cpuinfo};
+    for (let host in newhostStatus ) {
+        myStatus[host] = {"hostname":newhostStatus[host].hostname, "lastupdate":newhostStatus[host].lastupdate, "epoch":newhostStatus[host].epoch, "uptime":newhostStatus[host].uptime, "cpuinfo":newhostStatus[host].cpuinfo};
         //console.log(JSON.stringify(myUptimes));
         //console.log("=======================================================================");
         
@@ -431,7 +436,7 @@ app.get('/cpuinfo/:host', (req, res) => {
     console.log('<==========  Get diskinfo by Host ==========>');
     host = req.params.host;
     //console.log(host);
-    res.send(hostStatus[host].cpuinfo);
+    res.send(newhostStatus[host].cpuinfo);
 });
 
 app.get('/processinfo', (req, res) => {
@@ -439,8 +444,9 @@ app.get('/processinfo', (req, res) => {
     console.log('<========== Get Process Information ==========>');
     myStatus = {};
     
-    for (let host in hostStatus ) {
-        myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "processinfo":hostStatus[host].processinfo};
+    for (let host in newhostStatus ) {
+        //myStatus[host] = {"hostname":hostStatus[host].hostname, "lastupdate":hostStatus[host].lastupdate, "epoch":hostStatus[host].epoch, "uptime":hostStatus[host].uptime, "processinfo":hostStatus[host].processinfo};
+        myStatus[host] = {"newhostStatus":newhostStatus[host].hostname, "lastupdate":newhostStatus[host].lastupdate, "epoch":newhostStatus[host].epoch, "uptime":newhostStatus[host].uptime, "processinfo":newhostStatus[host].processinfo};
         //console.log(JSON.stringify(myUptimes));
         //console.log("=======================================================================");
         
@@ -455,7 +461,7 @@ app.get('/processinfo/:host', (req, res) => {
     console.log('<==========  Get processinfo by Host ==========>');
     host = req.params.host;
     //console.log(host);
-    res.send(hostStatus[host].processinfo);
+    res.send(newhostStatus[host].processinfo);
 });
 
 app.listen(8085, () => {
