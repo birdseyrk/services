@@ -342,6 +342,30 @@ app.delete('/uptime', (req, res) => {
     res.status(201).send(uptimes);
 });
 
+app.get('/groups', (req, res) => {
+
+    console.log('<========== Get groups Information ==========>');
+    myStatus = {};
+    
+    for (let host in newhostStatus ) {
+        myStatus[host] = {"hostname":newhostStatus[host].hostname, "lastupdate":newhostStatus[host].lastupdate, "epoch":newhostStatus[host].epoch, "uptime":newhostStatus[host].uptime, "groups":newhostStatus[host].groups};
+        //console.log(JSON.stringify(myUptimes));
+        //console.log("=======================================================================");
+        
+    }
+
+    //console.log(JSON.stringify(myStatus));
+    res.send(myStatus);
+});
+
+app.get('/groups/:host', (req, res) => {
+
+    console.log('<==========  Get groups by Host  ==========>');
+    host = req.params.host;
+    console.log(host);
+    res.send({"hostname":newhostStatus[host].hostname, "groups":newhostStatus[host].groups});
+});
+
 app.get('/meminfo', (req, res) => {
 
     console.log('<========== Get Memory Information ==========>');
