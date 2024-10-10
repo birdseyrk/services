@@ -78,6 +78,7 @@ testSleepES5();
 uptimes = {};
 const hostStatus = {};
 const newhostStatus = {};
+status:any = [];
 const svrhostname = {};
 const svruptime = {};
 const svrlastupdate = {};
@@ -137,7 +138,7 @@ app.get('/newhoststatus', (req, res) => {
 app.post('/newhostStatus', (req, res) => {
 
     // serverstatus: {
-    //         "hostname":"{{inventory_hostname}}", 
+    //     "hostname":"{{inventory_hostname}}", 
     //     "os":"{{myDistribution}}", 
     //     "osversion":"{{ansible_facts.distribution_version}}",
     //     "groups":"{{myGroups}}", 
