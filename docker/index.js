@@ -100,6 +100,7 @@ app.get('/hoststatus', (req, res) => {
         
         myStatus[host] = {
             "checksum":hoststatus[host].checksum, 
+            "cpuinfo":hoststatus[host].cpuinfo,
             "epoch":hoststatus[host].epoch, 
             "groups":hoststatus[host].groups, 
             "hostname":hoststatus[host].hostname, 
@@ -119,6 +120,7 @@ app.get('/hoststatus', (req, res) => {
             "os":hoststatus[host].os,
 
             "osversion":hoststatus[host].osversion,
+            "processinfo"::hoststatus[host].processinfo,
             "subagent":hoststatus[host].subagent,
             "tmpavail":hoststatus[host].tmpavail,
             "tmppercent":hoststatus[host].tmppercent,
