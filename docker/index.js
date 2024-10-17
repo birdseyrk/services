@@ -361,7 +361,7 @@ app.post('/uptime', (req, res) => {
     const { lastupdate } = req.body;
     const { epoch } = req.body;
 
-    console.log('<==========  Post uptime ' + hostname + ' ==========>');
+    console.log('<==========   Post uptime ' + hostname + '  ==========>');
 
     //set the hoststatus heartbeat.
     hoststatus[hostname].hostname   = hostname;
