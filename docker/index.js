@@ -120,7 +120,7 @@ app.get('/hoststatus', (req, res) => {
             "os":hoststatus[host].os,
 
             "osversion":hoststatus[host].osversion,
-            "processinfo"::hoststatus[host].processinfo,
+            "processinfo":hoststatus[host].processinfo,
             "subagent":hoststatus[host].subagent,
             "tmpavail":hoststatus[host].tmpavail,
             "tmppercent":hoststatus[host].tmppercent,
