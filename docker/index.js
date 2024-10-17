@@ -106,26 +106,30 @@ app.get('/hoststatus', (req, res) => {
             "hostname":hoststatus[host].hostname, 
             "lastupdate":hoststatus[host].lastupdate, 
             "local":hoststatus[host].local, 
+
             "logavail":hoststatus[host].logavail, 
             "logpercent":hoststatus[host].logpercent,
-        
             "logtotal":hoststatus[host].logtotal,
             "logused":hoststatus[host].logused,
+
             "memory":hoststatus[host].memory,
             "nodemanagers":hoststatus[host].nodemanagers,
+
             "opsavail":hoststatus[host].opsavail,
             "opspercent":hoststatus[host].opspercent,
             "opstotal":hoststatus[host].opstotal,
             "opsused":hoststatus[host].opsused,
-            "os":hoststatus[host].os,
 
+            "os":hoststatus[host].os,
             "osversion":hoststatus[host].osversion,
             "processinfo":hoststatus[host].processinfo,
             "subagent":hoststatus[host].subagent,
+
             "tmpavail":hoststatus[host].tmpavail,
             "tmppercent":hoststatus[host].tmppercent,
             "tmptotal":hoststatus[host].tmptotal,
             "tmpused":hoststatus[host].tmpused,
+
             "uptime":hoststatus[host].uptime
         };
         
@@ -168,40 +172,75 @@ app.post('/hoststatus', (req, res) => {
     //     "tmppercent":"{{tmppercent}}%",
     //     }
     
-    const { hostname } = req.body;
-    const { os } = req.body;
-    const { osversion } = req.body;
-    const { groups } = req.body;
-    const { local } = req.body;
-    const { uptime } = req.body;
-    const { memory } = req.body;
-    const { cpuinfo } = req.body;
-    const { processinfo } = req.body;
-    const { lastupdate } = req.body;
-    const { epoch } = req.body;
-    const { subagent } = req.body;
-    const { nodemanagers } = req.body;
-    const { checksum } = req.body;
+    
+    const { checksum }     = req.body;
+    const { cpuinfo }      = req.body;
+    const { epoch }        = req.body;
+    const { groups }       = req.body;
+    const { hostname }     = req.body;
+    const { lastupdate }   = req.body;
+    const { local }        = req.body;
+    
+    const { logavail }     = req.body;
+    const { logpercent }   = req.body;
+    const { logtotal }     = req.body;
+    const { logused }      = req.body;
 
-    const { opstotal } = req.body;
-    const { opsavail } = req.body;
-    const { opsused } = req.body;
-    const { opspercent } = req.body;
+    const { memory }       = req.body;
+    const { nodemanagers } = req.body;
+
+    const { opsavail }     = req.body;
+    const { opspercent }   = req.body;
+    const { opstotal }     = req.body;
+    const { opsused }      = req.body;
     
-    const { logtotal } = req.body;
-    const { logavail } = req.body;
-    const { logused } = req.body;
-    const { logpercent } = req.body;
-    
-    const { tmptotal } = req.body;
-    const { tmpavail } = req.body;
-    const { tmpused } = req.body;
-    const { tmppercent } = req.body;
+    const { os }           = req.body;
+    const { osversion }    = req.body;
+    const { processinfo }  = req.body;
+    const { subagent }     = req.body;
+
+    const { tmpavail }     = req.body;
+    const { tmppercent }   = req.body;
+    const { tmptotal }     = req.body;
+    const { tmpused }      = req.body;
+
+    const { uptime }       = req.body;
 
     console.log('<==========  Post hoststatus ' + hostname + '==========>'); 
 
     hoststatus[hostname] = {
-        checksum, cpuinfo, epoch, groups, hostname, lastupdate, local, logavail, logpercent, logtotal, logused, memory, nodemanagers, opsavail, opspercent, opstotal, opsused, os, osversion, processinfo, subagent, tmpavail, tmppercent, tmptotal, tmpused, uptime
+        checksum, 
+        cpuinfo, 
+        epoch, 
+        groups, 
+        hostname, 
+        lastupdate, 
+        local, 
+
+        logavail, 
+        logpercent, 
+        logtotal, 
+        logused, 
+
+        memory, 
+        nodemanagers, 
+
+        opsavail, 
+        opspercent, 
+        opstotal, 
+        opsused, 
+
+        os, 
+        osversion,
+        processinfo, 
+        subagent, 
+
+        tmpavail, 
+        tmppercent, 
+        tmptotal, 
+        tmpused, 
+
+        uptime
     };
 
     console.log('Hostname ===>' + JSON.stringify( hoststatus[hostname].hostname) +'<==='); 
@@ -288,10 +327,10 @@ app.get('/uptime', (req, res) => {
         //console.log(" adding " + host);
 
         const myServer = {};
-        myServer.hostname = uptimes[host].hostname;
-        myServer.uptime = uptimes[host].uptime;
+        myServer.hostname   = uptimes[host].hostname;
+        myServer.uptime     = uptimes[host].uptime;
         myServer.lastupdate = uptimes[host].lastupdate;
-        myServer.epoch = uptimes[host].epoch;
+        myServer.epoch      = uptimes[host].epoch;
 
         //console.log("my server " + JSON.stringify(myServer));
         myUptimes .push(myServer);
@@ -323,6 +362,11 @@ app.post('/uptime', (req, res) => {
     const { epoch } = req.body;
 
     console.log('<==========  Post uptime ' + hostname + ' ==========>');
+
+    //set the hoststatus heartbeat.
+    hoststatus[hostname].uptime = uptime;
+    hoststatus[hostname].lastupdate = lastupdate;
+    hoststatus[hostname].epoch = epoch;
 
     uptimes[hostname] = {
          hostname, uptime, lastupdate, epoch
