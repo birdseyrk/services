@@ -25,7 +25,7 @@ const Server = {
     "uptime": ""
 }
 
-myInitialHosts = {};
+//myInitialHosts = {};
 
 myInitialNewHosts = {};
 //myInitialUptimes = {};
