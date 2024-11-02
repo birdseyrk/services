@@ -52,15 +52,15 @@ myInitialUptimes = {};
 // myInitialUptimes["ubuntu2"] = {"hostname": "ubuntu2", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} };
 // myInitialUptimes["ubuntu3"] = {"hostname": "ubuntu3", "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} };
 
-myInitialUptimes  = [
-    {"hostname": "creede",           "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
-    {"hostname": "creede02",         "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
-    {"hostname": "creede03",         "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
-    {"hostname": "ubuntu1",          "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
-    {"hostname": "ubuntu2",          "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
-    {"hostname": "ubuntu3",          "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
-    {"hostname": "ansible-master",   "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} }
-];
+// myInitialUptimes  = [
+//     {"hostname": "creede",           "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+//     {"hostname": "creede02",         "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+//     {"hostname": "creede03",         "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+//     {"hostname": "ubuntu1",          "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+//     {"hostname": "ubuntu2",          "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+//     {"hostname": "ubuntu3",          "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} },
+//     {"hostname": "ansible-master",   "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {} }
+// ];
 
 
 /*
