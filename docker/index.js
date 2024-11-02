@@ -28,7 +28,7 @@ const Server = {
 myInitialHosts = {};
 
 myInitialNewHosts = {};
-myInitialUptimes = {};
+//myInitialUptimes = {};
 
 // myInitialHosts["creede"]         = {"hostname": "creede",         "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
 // myInitialHosts["creede02"]       = {"hostname": "creede02",      "lastupdate": "1970-01-01:00:00:00", "epoch": {}, "uptime": {}, "meminfo": {}, "diskinfo": {}, "cpuinfo": {}, "processinfo": {} , "os" :{} };
